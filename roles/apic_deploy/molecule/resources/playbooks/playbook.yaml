@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: apic
+  gather_facts: no
+
+  tasks:
+    - name: APIC Deploy
+      vars:
+        skip_non_idempotent_tasks: True
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_deploy

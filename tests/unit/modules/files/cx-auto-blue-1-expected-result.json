@@ -1,0 +1,626 @@
+[
+    {
+        "path": "apic.tenants.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.description",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.vrfs.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.unknown_unicast",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.vrf",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.primary_ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.public",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.private",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.shared",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.nd_ra_prefix",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.unknown_unicast",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.vrf",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.primary_ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.public",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.private",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.shared",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.bridge_domains.subnets.nd_ra_prefix",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.bridge_domain",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.physical_domains",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.pod_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.public",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.private",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.shared",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.nd_ra_prefix",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.no_default_gateway",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.providers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.providers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.providers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.imported_consumers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.bridge_domain",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.physical_domains",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.pod_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.static_ports.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.public",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.private",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.shared",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.nd_ra_prefix",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.subnets.no_default_gateway",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.consumers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.providers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.application_profiles.endpoint_groups.contracts.providers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.vrf",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.domain",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.nodes.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.nodes.router_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.nodes.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.nodes.router_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.bgp_peers.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.bgp_peers.remote_as",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.node_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.pod_id",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.port",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.vlan",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.bgp_peers.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.node_profiles.interface_profiles.interfaces.bgp_peers.remote_as",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.external_endpoint_groups.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.external_endpoint_groups.subnets.prefix",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.external_endpoint_groups.contracts.consumers",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.export_route_map.contexts.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.l3outs.export_route_map.contexts.match_rule",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.scope",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.filters.filter",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.filters.filter",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.filters.filter",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.filters.filter",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.contracts.subjects.filters.filter",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.policies.match_rules.name",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.policies.match_rules.prefixes.ip",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    },
+    {
+        "path": "apic.tenants.policies.match_rules.prefixes.aggregate",
+        "tenant": "cx-auto-blue-1",
+        "node": "",
+        "schema": ""
+    }
+]

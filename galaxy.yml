@@ -1,0 +1,51 @@
+---
+namespace: cisco
+name: aac
+version: 0.4.0
+
+readme: README.md
+
+authors:
+  - Daniel Schmidt <danischm@cisco.com>
+
+description: The ansible-aac project provides an Ansible collection for managing and automating your Cisco ACI environment following Infrastructure as Code (IaC) principles. It consists of a set of plugins and roles to support ACI provisioning in a declarative fashion.
+
+license_file: 'LICENSE'
+
+tags:
+  [
+    'collection',
+    'networking',
+    'cisco',
+    'sdn',
+    'aci',
+    'apic',
+    'mso',
+    'aac',
+    'iac',
+  ]
+
+dependencies:
+  'cisco.aci': '>=2.0.0'
+  'cisco.mso': '>=1.0.0'
+  'cisco.nae': '>=0.0.1'
+  'ansible.posix': '>=1.3.0'
+  'community.general': '>=4.5.0'
+  'community.vmware': '>=2.1.0'
+
+repository: https://wwwin-github.cisco.com/netascode/ansible-aac
+documentation: https://aac.cisco.com
+homepage: https://aac.cisco.com
+issues: https://wwwin-github.cisco.com/netascode/ansible-aac/issues
+
+build_ignore:
+  - .pytest_cache
+  - .vscode
+  - common
+  - docs
+  - test_results
+  - tests
+  - tmp
+  - site
+  - .drone.yml
+  - mkdocs.yml

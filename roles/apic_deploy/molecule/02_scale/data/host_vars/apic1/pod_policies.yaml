@@ -1,0 +1,51 @@
+---
+apic:
+  pod_policies:
+    pods:
+      - id: 1
+        data_plane_tep: 1.2.3.4
+        policy: POD1
+      - id: 2
+        tep_pool: 10.1.0.0/16
+        data_plane_tep: 1.2.3.5
+        policy: POD2
+      - id: 3
+        tep_pool: 10.3.0.0/16
+        data_plane_tep: 1.2.3.6
+        policy: POD3
+      - id: 4
+        tep_pool: 10.4.0.0/16
+        data_plane_tep: 1.2.3.7
+        policy: POD4
+      - id: 5
+        tep_pool: 10.5.0.0/16
+        data_plane_tep: 1.2.3.8
+        policy: POD5
+      - id: 6
+        tep_pool: 10.6.0.0/16
+        data_plane_tep: 1.2.3.9
+        policy: POD6
+      - id: 7
+        tep_pool: 10.7.0.0/16
+        data_plane_tep: 1.2.3.10
+        policy: POD7
+      - id: 8
+        tep_pool: 10.8.0.0/16
+        data_plane_tep: 1.2.3.11
+        policy: POD8
+      - id: 9
+        tep_pool: 10.9.0.0/16
+        data_plane_tep: 1.2.3.12
+        policy: POD9
+      - id: 10
+        tep_pool: 10.10.0.0/16
+        data_plane_tep: 1.2.3.13
+        policy: POD10
+      - id: 11
+        tep_pool: 10.11.0.0/16
+        data_plane_tep: 1.2.3.14
+        policy: POD11
+      - id: 12
+        tep_pool: 10.12.0.0/16
+        data_plane_tep: 1.2.3.15
+        policy: POD12

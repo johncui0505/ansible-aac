@@ -1,0 +1,6 @@
+---
+- name: 'DEPLOY Templates'
+  include_tasks: mso_deploy_template_task.yaml
+  loop: "{{ mso | community.general.json_query('schemas[?name==`' ~ schema ~ '`].templates[*].name') | flatten(levels=1) }}"
+  loop_control:
+    loop_var: template

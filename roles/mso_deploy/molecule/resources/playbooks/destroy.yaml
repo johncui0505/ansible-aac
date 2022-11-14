@@ -1,0 +1,6 @@
+---
+- name: Destroy
+  hosts: mso
+  gather_facts: no
+
+  tasks:

@@ -1,0 +1,21 @@
+---
+- name: 'DELETE : {{ taskprefix | default() }}{{ item[0].name }}'
+  cisco.aac.aci_delete:
+    hostname: '{{ apic_host }}'
+    username: '{{ apic_username }}'
+    password: '{{ apic_password | default(omit) }}'
+    private_key: '{{ apic_private_key | default(omit) }}'
+    use_proxy: '{{ apic_use_proxy | default(defaults.aci.apic_use_proxy) }}'
+    validate_certs: '{{ apic_validate_certs | default(defaults.aci.apic_validate_certs) }}'
+    aci_class: '{{ item[0].aci_classes }}'
+    file: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/{{ item[0].folder }}/{{ item[2] | default() }}{{ item[1] | default() | string }}/{{ item[0].template }}.json'
+    ignore: '{{ item[0].delete_ignore | default() }}'
+    ignore_attr: '{{ item[0].delete_ignore_attr | default() }}'
+    match_dn: '{{ item[0].match_dn | default("uni\/tn-" + item[2] + "\/.*" if item[2] is defined and item[2] else "") | replace("%%TENANT%%", item[2]) }}'
+    ignore_annotations: '{{ ignore_annotations | default([]) + defaults.aci.ignore_annotations }}'
+    only_aac: '{% if apic_delete_mode | default(defaults.aci.apic_delete_mode) == "aac" %}true{% else %}false{% endif %}'
+  register: delete_result
+  retries: 3
+  delay: 10
+  until: delete_result is succeeded
+  tags: [print_action]

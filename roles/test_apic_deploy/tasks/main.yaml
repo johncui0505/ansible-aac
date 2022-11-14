@@ -1,0 +1,112 @@
+---
+- name: APIC Tests
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        vars_from: '{{ file }}'
+        public: yes
+      loop:
+        - apic_defaults.yaml
+        - apic_objects.yaml
+      loop_control:
+        loop_var: file
+
+    - name: Get APIC Changed Objects
+      cisco.aac.aci_diff:
+        mode: '{{ apic_mode | default("only_provided") }}'
+        current_inventory: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+        previous_inventory: '{% if previous_inventory is defined %}{{ previous_inventory }}/host_vars/{{ inventory_hostname }}{% endif %}'
+        objects: '{{ objects }}'
+        spine_objects: '{{ spine_objects }}'
+        spines: "{{ (apic.node_policies | default()) | community.general.json_query('nodes[?role==`spine`].[id][]') | map('string') | list }}"
+        leaf_objects: '{{ leaf_objects }}'
+        leafs: "{{ (apic.node_policies | default()) | community.general.json_query('nodes[?role==`leaf`].[id][]') | map('string') | list }}"
+        tenant_objects: '{{ tenant_objects }}'
+        tenants: "{{ (apic | default()) | community.general.json_query('tenants[].name') }}"
+        skip_non_idempotent_tasks: '{{ skip_non_idempotent_tasks | default(false) }}'
+      register: diff_result
+      tags: [print_action]
+
+    - name: Create Root Directory
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests'
+        state: directory
+
+    - name: Create Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.test_folders }}'
+
+    - name: Create Spine Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/config/interface_policies/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.spines }}'
+
+    - name: Create Leaf Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/config/interface_policies/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.leafs }}'
+
+    - name: Create Tenant Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.test_tenant_folders }}'
+
+    - name: Create Test Results Directory
+      ansible.builtin.file:
+        path: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        state: directory
+
+    - name: Render Apic Common
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: test_apic_render_common
+
+    - name: Render Tests
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: test_apic_render_stage
+      vars:
+        taskprefix: "{{ ('NODE ' ~ item[1] ~ ' : ' if item[1] else ('TENANT ' ~ item[2] ~ ' : ' if item[2] else '')) ~ item[0].type | upper ~ ' : ' }}"
+      loop: '{{ diff_result.test_objects + diff_result.spine_test_objects + diff_result.leaf_test_objects + diff_result.tenant_test_objects }}'
+
+    - name: APIC Login
+      cisco.aac.aci_login:
+        hostname: '{{ apic_host }}'
+        username: '{{ apic_test_username | default(apic_username) }}'
+        password: '{{ apic_test_password | default(apic_password) }}'
+        use_proxy: '{{ apic_use_proxy | default(defaults.aci.apic_use_proxy) }}'
+        validate_certs: '{{ apic_validate_certs | default(defaults.aci.apic_validate_certs) }}'
+      register: apic_login
+
+    - name: Save APIC Token
+      ansible.builtin.copy:
+        content: "token = '{{ apic_login.token }}'"
+        dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/tests/apic_token.py'
+
+    - name: Run Tests
+      cisco.aac.aac_pabot:
+        tests: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/'
+        variable_file: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/tests/apic_token.py'
+        name: "{{ test_report_name | default('APIC') }}"
+        results_dir: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        output_file: output.xml
+        log_file: log.html
+        report_file: report.html
+        xunit_file: xunit.xml
+        skip_on_failure_tag: non-critical
+        run_empty_suites: True
+      when: '((diff_result.test_objects + diff_result.spine_test_objects + diff_result.leaf_test_objects + diff_result.tenant_test_objects) | length) > 0'
+      tags: [print_action]

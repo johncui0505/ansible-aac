@@ -1,0 +1,8 @@
+---
+- name: 'RENDER : {{ object.name }} : {{ item }}'
+  cisco.aac.template_local:
+    src: '{{ object.template }}.j2'
+    dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/{{ object.template }}/{{ item }}.json'
+    lstrip_blocks: yes
+  register: render_result
+  tags: [print_action]

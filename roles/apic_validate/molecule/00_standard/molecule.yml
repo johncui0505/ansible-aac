@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    managed: False
+    ansible_connection_options:
+      connection: local
+platforms:
+  - name: apic1
+provisioner:
+  name: ansible
+  log: True
+  env:
+    ANSIBLE_COLLECTIONS_PATHS: '~/.ansible/collections:../../../../'
+  playbooks:
+    converge: ../resources/playbooks/playbook.yaml
+verifier:
+  name: ansible
+  enabled: False
+scenario:
+  test_sequence:
+    - converge

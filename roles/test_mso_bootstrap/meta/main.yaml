@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: Daniel Schmidt
+  description: Ansible role with Cisco ACI MSO bootstrap tests
+  company: Cisco
+  license: LICENSE
+  min_ansible_version: 2.10
+  platforms:
+    - name: All
+      versions:
+        - all
+dependencies:
+  - role: mso_common

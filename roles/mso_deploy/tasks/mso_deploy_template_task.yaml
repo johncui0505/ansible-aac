@@ -1,0 +1,15 @@
+---
+- name: 'DEPLOY : Schema {{ schema }} : Template {{ template }}'
+  cisco.aac.mso_rest:
+    hostname: '{{ mso_host }}'
+    login_domain: '{{ mso_login_domain | default(omit) }}'
+    username: '{{ mso_username }}'
+    password: '{{ mso_password }}'
+    validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+    path: 'execute/schema/%%schemas%{{ schema }}%%/template/{{ template }}'
+    method: 'get'
+  register: configure_result
+  retries: 2
+  delay: 3
+  until: configure_result is succeeded
+  tags: [print_action]

@@ -1,0 +1,85 @@
+---
+- name: Create Consolidated APIC Test Report
+  hosts: apic
+  connection: local
+  gather_facts: no
+  vars:
+    test_results_folder: '{{ playbook_dir }}/../test_results'
+
+  tasks:
+    - name: Find All Roles
+      find:
+        paths: '{{ test_results_folder }}/{{ inventory_dir | basename }}/{{ inventory_hostname }}'
+        file_type: directory
+      register: DIRS
+
+    - name: Render Role Reports
+      cisco.aac.aac_rebot:
+        outputs: '{{ item.path }}/*/*output.xml'
+        name: 'Role {{ item.path | basename }}'
+        results_dir: '{{ item.path }}'
+        output_file: output.xml
+        log_file: log.html
+        report_file: report.html
+        run_empty_suites: True
+      loop: '{{ DIRS.files }}'
+      when: '(DIRS.files | length) > 0'
+      tags: [print_action]
+      ignore_errors: yes
+
+    - name: Find All Host Test Reports
+      find:
+        paths: '{{ test_results_folder }}/{{ inventory_dir | basename }}/{{ inventory_hostname }}/'
+        file_type: directory
+      register: DIRS
+
+    - name: Render Host Reports
+      cisco.aac.aac_rebot:
+        outputs: "{{ DIRS | community.general.json_query('files[?contains(path,`' ~ inventory_hostname ~ '`)].path') | map('regex_replace', '^(.*)$', '\\1/output.xml') | join(' ') }}"
+        name: 'Host {{ inventory_hostname }}'
+        results_dir: '{{ test_results_folder }}/{{ inventory_dir | basename }}/{{ inventory_hostname }}'
+        output_file: apic_output.xml
+        log_file: apic_log.html
+        report_file: apic_report.html
+        run_empty_suites: True
+      when: '(DIRS | length) > 0'
+      tags: [print_action]
+      ignore_errors: yes
+
+    - name: Find All Environment Test Reports
+      find:
+        paths: '{{ test_results_folder }}/{{ inventory_dir | basename }}/'
+        file_type: directory
+      register: DIRS
+
+    - name: Render Environment Reports
+      cisco.aac.aac_rebot:
+        outputs: "{{ DIRS | community.general.json_query('files[?contains(path,`' ~ inventory_hostname ~ '`)].path') | map('regex_replace', '^(.*)$', '\\1/apic_output.xml') | join(' ') }}"
+        name: 'Environment {{ inventory_dir | basename }}'
+        results_dir: '{{ test_results_folder }}/{{ inventory_dir | basename }}'
+        output_file: apic_output.xml
+        log_file: apic_log.html
+        report_file: apic_report.html
+        run_empty_suites: True
+      when: '(DIRS | length) > 0'
+      tags: [print_action]
+      ignore_errors: yes
+
+    - name: Find All Test Reports
+      find:
+        paths: '{{ test_results_folder }}/'
+        file_type: directory
+      register: DIRS
+
+    - name: Render Test Report
+      cisco.aac.aac_rebot:
+        outputs: "{{ DIRS | community.general.json_query('files[*].path') | map('regex_replace', '^(.*)$', '\\1/apic_output.xml') | join(' ') }}"
+        name: 'APIC'
+        results_dir: '{{ test_results_folder }}'
+        output_file: apic_output.xml
+        log_file: apic_log.html
+        report_file: apic_report.html
+        xunit_file: apic_xunit.xml
+        run_empty_suites: True
+      when: '(DIRS | length) > 0'
+      tags: [print_action]

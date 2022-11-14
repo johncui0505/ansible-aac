@@ -1,0 +1,52 @@
+---
+- name: APIC Bootstrap Tests
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        vars_from: apic_defaults.yaml
+        public: yes
+
+    - name: Create Root Directory
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}bootstrap_tests'
+        state: directory
+
+    - name: Create Test Results Directory
+      ansible.builtin.file:
+        path: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        state: directory
+
+    - name: Render Apic Common
+      vars:
+        test_folder: 'bootstrap_tests'
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: test_apic_render_common
+
+    - name: 'RENDER TEST : Bootstrap'
+      cisco.aac.template_local:
+        src: 'bootstrap.robot'
+        dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}bootstrap_tests/bootstrap.robot'
+        lstrip_blocks: yes
+      tags: [print_action]
+
+    - name: Run Tests
+      cisco.aac.aac_robot:
+        tests: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}bootstrap_tests/'
+        name: "{{ test_report_name | default('APIC Bootstrap') }}"
+        results_dir: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        output_file: bootstrap_output.xml
+        log_file: bootstrap_log.html
+        report_file: bootstrap_report.html
+        xunit_file: bootstrap_xunit.xml
+        # skip_on_failure_tag: non-critical
+        run_empty_suites: True
+      tags: [print_action]

@@ -1,0 +1,20 @@
+---
+- name: 'RENDER TEST : {{ taskprefix | default() }}{{ item.name }}'
+  cisco.aac.template_local:
+    src: '{{ item.type }}/{{ item.folder }}/{{ item.template }}.robot'
+    dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item.type }}/{{ item.folder }}/{{ item.template }}.robot'
+    lstrip_blocks: yes
+  register: render_result
+  tags: [print_action]
+
+- name: 'RENDER TEST RESOLVE : {{ taskprefix | default() }}{{ item.name }}'
+  cisco.aac.mso_resolve:
+    hostname: '{{ mso_host }}'
+    login_domain: '{{ mso_test_login_domain | default(mso_login_domain | default(omit)) }}'
+    username: '{{ mso_test_username | default(mso_username) }}'
+    password: '{{ mso_test_password | default(mso_password) }}'
+    validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+    src: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item.type }}/{{ item.folder }}/{{ item.template }}.robot'
+    dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item.type }}/{{ item.folder }}/{{ item.template }}.robot'
+  when: render_result.changed # noqa no-handler
+  tags: [print_action]

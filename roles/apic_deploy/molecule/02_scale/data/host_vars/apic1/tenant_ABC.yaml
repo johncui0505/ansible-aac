@@ -1,0 +1,2204 @@
+---
+apic:
+  tenants:
+    - name: ABC
+      vrfs:
+        - name: VRF1
+          contracts:
+            consumers:
+              - CON1
+            providers:
+              - CON1
+            imported_consumers:
+              - IMPORT-CON
+        - name: VRF2
+        - name: VRF3
+        - name: VRF4
+        - name: VRF5
+        - name: VRF6
+        - name: VRF7
+        - name: VRF8
+        - name: VRF9
+        - name: VRF10
+        - name: VRF11
+        - name: VRF12
+        - name: VRF13
+        - name: VRF14
+        - name: VRF15
+        - name: VRF16
+        - name: VRF17
+        - name: VRF18
+        - name: VRF19
+        - name: VRF20
+        - name: VRF21
+        - name: VRF22
+        - name: VRF23
+        - name: VRF24
+        - name: VRF25
+        - name: VRF26
+        - name: VRF27
+        - name: VRF28
+        - name: VRF29
+        - name: VRF30
+        - name: VRF31
+        - name: VRF32
+        - name: VRF33
+        - name: VRF34
+        - name: VRF35
+        - name: VRF36
+        - name: VRF37
+        - name: VRF38
+        - name: VRF39
+        - name: VRF40
+        - name: VRF41
+        - name: VRF42
+        - name: VRF43
+        - name: VRF44
+        - name: VRF45
+        - name: VRF46
+        - name: VRF47
+        - name: VRF48
+        - name: VRF49
+        - name: VRF50
+        - name: VRF51
+        - name: VRF52
+        - name: VRF53
+        - name: VRF54
+        - name: VRF55
+        - name: VRF56
+        - name: VRF57
+        - name: VRF58
+        - name: VRF59
+        - name: VRF60
+        - name: VRF61
+        - name: VRF62
+        - name: VRF63
+        - name: VRF64
+        - name: VRF65
+        - name: VRF66
+        - name: VRF67
+        - name: VRF68
+        - name: VRF69
+        - name: VRF70
+        - name: VRF71
+        - name: VRF72
+        - name: VRF73
+        - name: VRF74
+        - name: VRF75
+        - name: VRF76
+        - name: VRF77
+        - name: VRF78
+        - name: VRF79
+        - name: VRF80
+        - name: VRF81
+        - name: VRF82
+        - name: VRF83
+        - name: VRF84
+        - name: VRF85
+        - name: VRF86
+        - name: VRF87
+        - name: VRF88
+        - name: VRF89
+        - name: VRF90
+        - name: VRF91
+        - name: VRF92
+        - name: VRF93
+        - name: VRF94
+        - name: VRF95
+        - name: VRF96
+        - name: VRF97
+        - name: VRF98
+        - name: VRF99
+        - name: VRF100
+      bridge_domains:
+        - name: BD1
+          vrf: VRF1
+          subnets:
+            - ip: 1.1.1.1/24
+          l3outs:
+            - L3OUT1
+        - name: BD2
+          vrf: VRF2
+        - name: BD3
+          vrf: VRF3
+        - name: BD4
+          vrf: VRF4
+        - name: BD5
+          vrf: VRF5
+        - name: BD6
+          vrf: VRF6
+        - name: BD7
+          vrf: VRF7
+        - name: BD8
+          vrf: VRF8
+        - name: BD9
+          vrf: VRF9
+        - name: BD10
+          vrf: VRF10
+        - name: BD11
+          vrf: VRF11
+        - name: BD12
+          vrf: VRF12
+        - name: BD13
+          vrf: VRF13
+        - name: BD14
+          vrf: VRF14
+        - name: BD15
+          vrf: VRF15
+        - name: BD16
+          vrf: VRF16
+        - name: BD17
+          vrf: VRF17
+        - name: BD18
+          vrf: VRF18
+        - name: BD19
+          vrf: VRF19
+        - name: BD20
+          vrf: VRF20
+        - name: BD21
+          vrf: VRF21
+        - name: BD22
+          vrf: VRF22
+        - name: BD23
+          vrf: VRF23
+        - name: BD24
+          vrf: VRF24
+        - name: BD25
+          vrf: VRF25
+        - name: BD26
+          vrf: VRF26
+        - name: BD27
+          vrf: VRF27
+        - name: BD28
+          vrf: VRF28
+        - name: BD29
+          vrf: VRF29
+        - name: BD30
+          vrf: VRF30
+        - name: BD31
+          vrf: VRF31
+        - name: BD32
+          vrf: VRF32
+        - name: BD33
+          vrf: VRF33
+        - name: BD34
+          vrf: VRF34
+        - name: BD35
+          vrf: VRF35
+        - name: BD36
+          vrf: VRF36
+        - name: BD37
+          vrf: VRF37
+        - name: BD38
+          vrf: VRF38
+        - name: BD39
+          vrf: VRF39
+        - name: BD40
+          vrf: VRF40
+        - name: BD41
+          vrf: VRF41
+        - name: BD42
+          vrf: VRF42
+        - name: BD43
+          vrf: VRF43
+        - name: BD44
+          vrf: VRF44
+        - name: BD45
+          vrf: VRF45
+        - name: BD46
+          vrf: VRF46
+        - name: BD47
+          vrf: VRF47
+        - name: BD48
+          vrf: VRF48
+        - name: BD49
+          vrf: VRF49
+        - name: BD50
+          vrf: VRF50
+        - name: BD51
+          vrf: VRF51
+        - name: BD52
+          vrf: VRF52
+        - name: BD53
+          vrf: VRF53
+        - name: BD54
+          vrf: VRF54
+        - name: BD55
+          vrf: VRF55
+        - name: BD56
+          vrf: VRF56
+        - name: BD57
+          vrf: VRF57
+        - name: BD58
+          vrf: VRF58
+        - name: BD59
+          vrf: VRF59
+        - name: BD60
+          vrf: VRF60
+        - name: BD61
+          vrf: VRF61
+        - name: BD62
+          vrf: VRF62
+        - name: BD63
+          vrf: VRF63
+        - name: BD64
+          vrf: VRF64
+        - name: BD65
+          vrf: VRF65
+        - name: BD66
+          vrf: VRF66
+        - name: BD67
+          vrf: VRF67
+        - name: BD68
+          vrf: VRF68
+        - name: BD69
+          vrf: VRF69
+        - name: BD70
+          vrf: VRF70
+        - name: BD71
+          vrf: VRF71
+        - name: BD72
+          vrf: VRF72
+        - name: BD73
+          vrf: VRF73
+        - name: BD74
+          vrf: VRF74
+        - name: BD75
+          vrf: VRF75
+        - name: BD76
+          vrf: VRF76
+        - name: BD77
+          vrf: VRF77
+        - name: BD78
+          vrf: VRF78
+        - name: BD79
+          vrf: VRF79
+        - name: BD80
+          vrf: VRF80
+        - name: BD81
+          vrf: VRF81
+        - name: BD82
+          vrf: VRF82
+        - name: BD83
+          vrf: VRF83
+        - name: BD84
+          vrf: VRF84
+        - name: BD85
+          vrf: VRF85
+        - name: BD86
+          vrf: VRF86
+        - name: BD87
+          vrf: VRF87
+        - name: BD88
+          vrf: VRF88
+        - name: BD89
+          vrf: VRF89
+        - name: BD90
+          vrf: VRF90
+        - name: BD91
+          vrf: VRF91
+        - name: BD92
+          vrf: VRF92
+        - name: BD93
+          vrf: VRF93
+        - name: BD94
+          vrf: VRF94
+        - name: BD95
+          vrf: VRF95
+        - name: BD96
+          vrf: VRF96
+        - name: BD97
+          vrf: VRF97
+        - name: BD98
+          vrf: VRF98
+        - name: BD99
+          vrf: VRF99
+        - name: BD100
+          vrf: VRF100
+      l3outs:
+        - name: L3OUT1
+          vrf: VRF1
+          domain: ANS-L3
+          ospf:
+            area: 0
+            policy: ABC-OIP
+          nodes:
+            - node_id: 101
+              router_id: 5.5.5.5
+              static_routes:
+                - prefix: 2.2.2.0/24
+                  next_hops:
+                    - ip: 6.6.6.6
+              interfaces:
+                - port: 10
+                  ip: 7.7.7.7/24
+                - channel: VPC1
+                  svi: 'yes'
+                  vlan: 301
+                  ip_a: 14.14.14.1/24
+                  ip_b: 14.14.14.2/24
+                  ip_shared: 14.14.14.3/24
+                  bgp_peers:
+                    - ip: 14.14.14.14
+                      remote_as: 65010
+          external_endpoint_groups:
+            - name: EXT-EPG
+              subnets:
+                - name: ALL
+                  prefix: 0.0.0.0/0
+              contracts:
+                consumers:
+                  - CON1
+                providers:
+                  - CON1
+                imported_consumers:
+                  - IMPORT-CON
+      application_profiles:
+        - name: AP1
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+              physical_domains:
+                - ANS-PHY
+              vmware_vmm_domains:
+                - name: ANS-VMM1
+              static_ports:
+                - node_id: 101
+                  port: 10
+                  vlan: 135
+                - channel: VPC1
+                  vlan: 135
+              contracts:
+                consumers:
+                  - CON1
+                providers:
+                  - CON1
+                imported_consumers:
+                  - IMPORT-CON
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP2
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP3
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP4
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP5
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP6
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP7
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP9
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+        - name: AP10
+          endpoint_groups:
+            - name: EPG1
+              bridge_domain: BD1
+            - name: EPG2
+              bridge_domain: BD2
+            - name: EPG3
+              bridge_domain: BD3
+            - name: EPG4
+              bridge_domain: BD4
+            - name: EPG5
+              bridge_domain: BD5
+            - name: EPG6
+              bridge_domain: BD6
+            - name: EPG7
+              bridge_domain: BD7
+            - name: EPG8
+              bridge_domain: BD8
+            - name: EPG9
+              bridge_domain: BD9
+            - name: EPG10
+              bridge_domain: BD10
+            - name: EPG11
+              bridge_domain: BD11
+            - name: EPG12
+              bridge_domain: BD12
+            - name: EPG13
+              bridge_domain: BD13
+            - name: EPG14
+              bridge_domain: BD14
+            - name: EPG15
+              bridge_domain: BD15
+            - name: EPG16
+              bridge_domain: BD16
+            - name: EPG17
+              bridge_domain: BD17
+            - name: EPG18
+              bridge_domain: BD18
+            - name: EPG19
+              bridge_domain: BD19
+            - name: EPG20
+              bridge_domain: BD20
+            - name: EPG21
+              bridge_domain: BD21
+            - name: EPG22
+              bridge_domain: BD22
+            - name: EPG23
+              bridge_domain: BD23
+            - name: EPG24
+              bridge_domain: BD24
+            - name: EPG25
+              bridge_domain: BD25
+            - name: EPG26
+              bridge_domain: BD26
+            - name: EPG27
+              bridge_domain: BD27
+            - name: EPG28
+              bridge_domain: BD28
+            - name: EPG29
+              bridge_domain: BD29
+            - name: EPG30
+              bridge_domain: BD30
+            - name: EPG31
+              bridge_domain: BD31
+            - name: EPG32
+              bridge_domain: BD32
+            - name: EPG33
+              bridge_domain: BD33
+            - name: EPG34
+              bridge_domain: BD34
+            - name: EPG35
+              bridge_domain: BD35
+            - name: EPG36
+              bridge_domain: BD36
+            - name: EPG37
+              bridge_domain: BD37
+            - name: EPG38
+              bridge_domain: BD38
+            - name: EPG39
+              bridge_domain: BD39
+            - name: EPG40
+              bridge_domain: BD40
+            - name: EPG41
+              bridge_domain: BD41
+            - name: EPG42
+              bridge_domain: BD42
+            - name: EPG43
+              bridge_domain: BD43
+            - name: EPG44
+              bridge_domain: BD44
+            - name: EPG45
+              bridge_domain: BD45
+            - name: EPG46
+              bridge_domain: BD46
+            - name: EPG47
+              bridge_domain: BD47
+            - name: EPG48
+              bridge_domain: BD48
+            - name: EPG49
+              bridge_domain: BD49
+            - name: EPG50
+              bridge_domain: BD50
+            - name: EPG51
+              bridge_domain: BD51
+            - name: EPG52
+              bridge_domain: BD52
+            - name: EPG53
+              bridge_domain: BD53
+            - name: EPG54
+              bridge_domain: BD54
+            - name: EPG55
+              bridge_domain: BD55
+            - name: EPG56
+              bridge_domain: BD56
+            - name: EPG57
+              bridge_domain: BD57
+            - name: EPG58
+              bridge_domain: BD58
+            - name: EPG59
+              bridge_domain: BD59
+            - name: EPG60
+              bridge_domain: BD60
+            - name: EPG61
+              bridge_domain: BD61
+            - name: EPG62
+              bridge_domain: BD62
+            - name: EPG63
+              bridge_domain: BD63
+            - name: EPG64
+              bridge_domain: BD64
+            - name: EPG65
+              bridge_domain: BD65
+            - name: EPG66
+              bridge_domain: BD66
+            - name: EPG67
+              bridge_domain: BD67
+            - name: EPG68
+              bridge_domain: BD68
+            - name: EPG69
+              bridge_domain: BD69
+            - name: EPG70
+              bridge_domain: BD70
+            - name: EPG71
+              bridge_domain: BD71
+            - name: EPG72
+              bridge_domain: BD72
+            - name: EPG73
+              bridge_domain: BD73
+            - name: EPG74
+              bridge_domain: BD74
+            - name: EPG75
+              bridge_domain: BD75
+            - name: EPG76
+              bridge_domain: BD76
+            - name: EPG77
+              bridge_domain: BD77
+            - name: EPG78
+              bridge_domain: BD78
+            - name: EPG79
+              bridge_domain: BD79
+            - name: EPG80
+              bridge_domain: BD80
+            - name: EPG81
+              bridge_domain: BD81
+            - name: EPG82
+              bridge_domain: BD82
+            - name: EPG83
+              bridge_domain: BD83
+            - name: EPG84
+              bridge_domain: BD84
+            - name: EPG85
+              bridge_domain: BD85
+            - name: EPG86
+              bridge_domain: BD86
+            - name: EPG87
+              bridge_domain: BD87
+            - name: EPG88
+              bridge_domain: BD88
+            - name: EPG89
+              bridge_domain: BD89
+            - name: EPG90
+              bridge_domain: BD90
+            - name: EPG91
+              bridge_domain: BD91
+            - name: EPG92
+              bridge_domain: BD92
+            - name: EPG93
+              bridge_domain: BD93
+            - name: EPG94
+              bridge_domain: BD94
+            - name: EPG95
+              bridge_domain: BD95
+            - name: EPG96
+              bridge_domain: BD96
+            - name: EPG97
+              bridge_domain: BD97
+            - name: EPG98
+              bridge_domain: BD98
+            - name: EPG99
+              bridge_domain: BD99
+            - name: EPG100
+              bridge_domain: BD100
+      contracts:
+        - name: CON1
+          subjects:
+            - name: ANS-SUB
+              filters:
+                - filter: ANS-FILTER
+      filters:
+        - name: ANS-FILTER
+          entries:
+            - name: TEST
+      policies:
+        ospf_interface_policies:
+          - name: ABC-OIP

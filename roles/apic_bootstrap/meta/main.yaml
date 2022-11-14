@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Daniel Schmidt
+  description: Ansible role with Cisco ACI APIC bootstrap tasks
+  company: Cisco
+  license: LICENSE
+  min_ansible_version: 2.10
+  platforms:
+    - name: All
+      versions:
+        - all

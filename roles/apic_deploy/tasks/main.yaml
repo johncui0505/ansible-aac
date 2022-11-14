@@ -1,0 +1,87 @@
+---
+- name: APIC Deploy Tasks
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        vars_from: '{{ file }}'
+        public: yes
+      loop:
+        - apic_defaults.yaml
+        - apic_objects.yaml
+      loop_control:
+        loop_var: file
+
+    - name: Get APIC Changed Objects
+      cisco.aac.aci_diff:
+        mode: '{{ apic_mode | default("only_provided") }}'
+        current_inventory: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+        previous_inventory: '{% if previous_inventory is defined %}{{ previous_inventory }}/host_vars/{{ inventory_hostname }}{% endif %}'
+        objects: '{{ objects }}'
+        spine_objects: '{{ spine_objects }}'
+        spines: "{{ (apic.node_policies | default()) | community.general.json_query('nodes[?role==`spine`].[id][]') | map('string') | list }}"
+        leaf_objects: '{{ leaf_objects }}'
+        leafs: "{{ (apic.node_policies | default()) | community.general.json_query('nodes[?role==`leaf`].[id][]') | map('string') | list }}"
+        tenant_objects: '{{ tenant_objects }}'
+        tenants: "{{ (apic | default()) | community.general.json_query('tenants[].name') }}"
+        skip_non_idempotent_tasks: '{{ skip_non_idempotent_tasks | default(false) }}'
+      register: diff_result
+      tags: [print_action]
+
+    - name: Create Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.folders }}'
+
+    - name: Create Spine Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/interface_policies/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.spines }}'
+
+    - name: Create Leaf Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/interface_policies/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.leafs }}'
+
+    - name: Create Tenant Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/tenants/{{ item }}'
+        state: directory
+      loop: '{{ diff_result.tenants }}'
+
+    - name: Render Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: apic_render_stage
+      vars:
+        taskprefix: "{{ 'NODE ' ~ item[1] ~ ' : ' if item[1] else ('TENANT ' ~ item[2] ~ ' : ' if item[2] else '') }}"
+      loop: '{{ diff_result.objects + diff_result.spine_objects + diff_result.leaf_objects + diff_result.tenant_objects }}'
+      when: apic_option_render | default(defaults.aci.apic_option_render)
+
+    - name: Configure Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: apic_config_stage
+      vars:
+        taskprefix: "{{ 'NODE ' ~ item[1] ~ ' : ' if item[1] else ('TENANT ' ~ item[2] ~ ' : ' if item[2] else '') }}"
+      loop: '{{ diff_result.objects + diff_result.spine_objects + diff_result.leaf_objects + diff_result.tenant_objects }}'
+      when: apic_option_configure | default(defaults.aci.apic_option_configure)
+
+    - name: Delete Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        tasks_from: apic_delete_stage
+      vars:
+        taskprefix: "{{ 'TENANT ' ~ item[2] ~ ' : ' if item[2] else '' }}"
+      loop: '{{ diff_result.objects + diff_result.tenant_objects }}'
+      when: (apic_option_delete | default(defaults.aci.apic_option_delete)) and (item[0].delete | default(true))

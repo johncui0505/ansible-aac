@@ -1,0 +1,16 @@
+---
+- name: 'DELETE : {{ object.name }}'
+  cisco.aac.mso_delete:
+    hostname: '{{ mso_host }}'
+    username: '{{ mso_username }}'
+    password: '{{ mso_password }}'
+    validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+    path: '{{ object.api_path }}'
+    desired: '{{ object.object_ids }}'
+    ignore: '{{ object.delete_ignore | default() }}'
+    ignore_attr: '{{ object.delete_ignore_attr | default() }}'
+  register: delete_result
+  retries: 2
+  delay: 3
+  until: delete_result is succeeded
+  tags: [print_action]

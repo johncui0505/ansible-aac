@@ -1,0 +1,13 @@
+---
+aci:
+  children:
+    apic:
+      hosts:
+        apic1:
+          apic_host: 10.51.77.39
+          ansible_connection: local
+    mso:
+      hosts:
+        mso1:
+          mso_host: 10.51.77.52
+          ansible_connection: local

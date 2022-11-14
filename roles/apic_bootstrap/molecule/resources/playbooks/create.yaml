@@ -1,0 +1,26 @@
+---
+- name: Create
+  hosts: apic
+  gather_facts: no
+
+  tasks:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Revert ACI Simulator to clean state
+      include_tasks: '../../../../../common/test/tasks/revert_acisim1.yaml'
+      vars:
+        snapshot: 'Clean'
+
+    - name: Cleanup old rendered folder
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}'
+        state: absent
+
+    - name: Cleanup old test results
+      ansible.builtin.file:
+        path: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        state: absent

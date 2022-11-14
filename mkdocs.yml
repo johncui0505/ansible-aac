@@ -1,0 +1,229 @@
+---
+site_name: ACI as Code
+site_description: User documentation for ACI as Code
+repo_name: ansible-aac
+repo_url: https://aac.cisco.com
+site_author: Daniel Schmidt
+theme:
+  name: material
+  features:
+    - navigation.instant
+  hljs_languages:
+    - yaml
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: teal
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: yellow
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+        theme: |
+          ^(JSON.parse(window.localStorage.getItem(__prefix('__palette'))).index == 1) ? 'dark' : 'neutral'
+        securityLevel: 'loose'
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - extra/refresh_on_toggle_dark_light.js
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+nav:
+  - Overview: index.md
+  - Quick Start: quick_start.md
+  - Inventory: inventory.md
+  - Plugins:
+      - selective_loop: plugins/selective_loop.md
+      - host_vars_merge: plugins/host_vars_merge.md
+      - template_local: plugins/template_local.md
+  - Modules:
+      - template_local: modules/template_local.md
+      - aci_diff: modules/aci_diff.md
+      - aci_login: modules/aci_login.md
+      - aci_delete: modules/aci_delete.md
+      - mso_diff: modules/mso_diff.md
+      - mso_login: modules/mso_login.md
+      - mso_rest: modules/mso_rest.md
+      - mso_delete: modules/mso_delete.md
+      - mso_resolve: modules/mso_resolve.md
+  - Roles:
+      - apic_validate: roles/apic_validate.md
+      - apic_common: roles/apic_common.md
+      - apic_bootstrap: roles/apic_bootstrap.md
+      - apic_snapshot: roles/apic_snapshot.md
+      - apic_deploy: roles/apic_deploy.md
+      - test_apic_bootstrap: roles/test_apic_bootstrap.md
+      - test_apic_deploy: roles/test_apic_deploy.md
+      - mso_validate: roles/mso_validate.md
+      - mso_common: roles/mso_common.md
+      - mso_bootstrap: roles/mso_bootstrap.md
+      - mso_deploy: roles/mso_deploy.md
+      - test_mso_bootstrap: roles/test_mso_bootstrap.md
+      - test_mso_deploy: roles/test_mso_deploy.md
+  - Data Model:
+      - Overview: model/overview.md
+      - APIC:
+          - Bootstrap:
+              - Bootstrap: model/apic/bootstrap/bootstrap.md
+          - Fabric Policies:
+              - Date and Time Format: model/apic/fabric_policies/date_time_format.md
+              - APIC Connectivity Preference: model/apic/fabric_policies/apic_connectivity_pref.md
+              - GUI and CLI Banner: model/apic/fabric_policies/banner.md
+              - EP Loop Protection: model/apic/fabric_policies/ep_loop_protection.md
+              - Rogue EP Control: model/apic/fabric_policies/rogue_ep_control.md
+              - IP Aging: model/apic/fabric_policies/ip_aging.md
+              - Fabric Wide Settings: model/apic/fabric_policies/fabric_wide_settings.md
+              - System Global GIPo Policy: model/apic/fabric_policies/system_global_gipo.md
+              - Port Tracking: model/apic/fabric_policies/port_tracking.md
+              - PTP: model/apic/fabric_policies/ptp.md
+              - Health Score Evaluation Policy: model/apic/fabric_policies/health_score_evaluation.md
+              - Fabric ISIS Redistribute Metric: model/apic/fabric_policies/isis_policy.md
+              - Fabric ISIS BFD: model/apic/fabric_policies/fabric_isis_bfd.md
+              - DNS Profile Policy: model/apic/fabric_policies/dns_policy.md
+              - Error Disabled Recovery Policy: model/apic/fabric_policies/err_disabled_recovery.md
+              - COOP Policy Group: model/apic/fabric_policies/coop_policy.md
+              - Infra DSCP Translation Policy: model/apic/fabric_policies/infra_dscp_translation_policy.md
+              - AAA Settings: model/apic/fabric_policies/aaa.md
+              - TACACS Provider: model/apic/fabric_policies/tacacs.md
+              - User: model/apic/fabric_policies/user.md
+              - Login Domain: model/apic/fabric_policies/login_domain.md
+              - Remote Location: model/apic/fabric_policies/remote_location.md
+              - Scheduler: model/apic/fabric_policies/scheduler.md
+              - Config Export: model/apic/fabric_policies/config_export.md
+              - SNMP Trap: model/apic/fabric_policies/snmp_trap.md
+              - Syslog: model/apic/fabric_policies/syslog.md
+              - Monitoring Policy: model/apic/fabric_policies/monitoring_policy.md
+              - CA Certificate: model/apic/fabric_policies/ca_cert.md
+              - Keyring: model/apic/fabric_policies/keyring.md
+              - BGP Policy: model/apic/fabric_policies/bgp_policy.md
+              - Leaf Switch Profile: model/apic/fabric_policies/fp_leaf_switch_profile.md
+              - Spine Switch Profile: model/apic/fabric_policies/fp_spine_switch_profile.md
+              - Leaf Interface Profile: model/apic/fabric_policies/fp_leaf_interface_profile.md
+              - Spine Interface Profile: model/apic/fabric_policies/fp_spine_interface_profile.md
+              - Pod Profile: model/apic/fabric_policies/pod_profile.md
+              - Date and Time Policy: model/apic/fabric_policies/date_time_policy.md
+              - SNMP Policy: model/apic/fabric_policies/snmp_policy.md
+              - Management Access Policy: model/apic/fabric_policies/management_access_policy.md
+              - PSU Switch Policy: model/apic/fabric_policies/psu_policy.md
+              - Node Control Switch Policy: model/apic/fabric_policies/node_control_policy.md
+              - Pod Policy Group: model/apic/fabric_policies/pod_policy_group.md
+              - Fabric Leaf Switch Policy Group: model/apic/fabric_policies/fp_leaf_switch_policy_group.md
+              - Fabric Spine Switch Policy Group: model/apic/fabric_policies/fp_spine_switch_policy_group.md
+              - External Connectivity Policy: model/apic/fabric_policies/ext_conn_policy.md
+              - VMware VMM Domain: model/apic/fabric_policies/vmw_vmm_domain.md
+              - Geolocation Policy: model/apic/fabric_policies/geolocation.md
+          - Access Policies:
+              - MCP Global Instance: model/apic/access_policies/mcp.md
+              - QoS Class: model/apic/access_policies/qos.md
+              - Access Leaf Switch Profile: model/apic/access_policies/ap_leaf_switch_profile.md
+              - Access Spine Switch Profile: model/apic/access_policies/ap_spine_switch_profile.md
+              - Access Leaf Interface Profile: model/apic/access_policies/ap_leaf_interface_profile.md
+              - Access FEX Interface Profile: model/apic/access_policies/ap_fex_interface_profile.md
+              - Access Spine Interface Profile: model/apic/access_policies/ap_spine_interface_profile.md
+              - Vlan Pool: model/apic/access_policies/vlan_pool.md
+              - Physical Domain: model/apic/access_policies/physical_domain.md
+              - Routed Domain: model/apic/access_policies/routed_domain.md
+              - AAEP: model/apic/access_policies/aaep.md
+              - CDP Interface Policy: model/apic/access_policies/cdp_policy.md
+              - LLDP Interface Policy: model/apic/access_policies/lldp_policy.md
+              - Link Level Interface Policy: model/apic/access_policies/link_level_policy.md
+              - Port Channel Interface Policy: model/apic/access_policies/port_channel_policy.md
+              - Port Channel Member Interface Policy: model/apic/access_policies/port_channel_member_policy.md
+              - Spanning Tree Interface Policy: model/apic/access_policies/spanning_tree_policy.md
+              - MCP Interface Policy: model/apic/access_policies/mcp_policy.md
+              - L2 Interface Policy: model/apic/access_policies/l2_policy.md
+              - Storm Control Interface Policy: model/apic/access_policies/storm_control_policy.md
+              - MST Switch Policy: model/apic/access_policies/mst_policy.md
+              - VPC Switch Policy: model/apic/access_policies/vpc_policy.md
+              - Forwarding Scale Switch Policy: model/apic/access_policies/forwarding_scale_policy.md
+              - Access Leaf Switch Policy Group: model/apic/access_policies/ap_leaf_switch_policy_group.md
+              - Access Spine Interface Policy Group: model/apic/access_policies/ap_spine_interface_policy_group.md
+              - Access Leaf Interface Policy Group: model/apic/access_policies/ap_leaf_interface_policy_group.md
+              - VSPAN Destination Group: model/apic/access_policies/vspan_destination_group.md
+              - VSPAN Session: model/apic/access_policies/vspan_session.md
+              - SPAN Source Group: model/apic/access_policies/span_source_group.md
+              - SPAN Destination Group: model/apic/access_policies/span_destination_group.md
+              - SPAN Filter Group: model/apic/access_policies/span_filter_group.md
+          - Pod Policies:
+              - Pod Setup: model/apic/pod_policies/pod_setup.md
+          - Node Policies:
+              - Node Registration: model/apic/node_policies/node_registration.md
+              - OOB Node Address: model/apic/node_policies/oob_node_address.md
+              - INB Node Address: model/apic/node_policies/inb_node_address.md
+              - Maintenance Group: model/apic/node_policies/maintenance_group.md
+              - Firmware Group: model/apic/node_policies/firmware_group.md
+              - VPC Group: model/apic/node_policies/vpc_group.md
+          - Interface Policies:
+              - Access Spine Interface Selector: model/apic/interface_policies/spine_interface_selector.md
+              - Access Leaf Interface Selector: model/apic/interface_policies/leaf_interface_selector.md
+              - Access FEX Interface Selector: model/apic/interface_policies/fex_interface_selector.md
+          - Tenants:
+              - Tenant: model/apic/tenants/tenant.md
+              - VRF: model/apic/tenants/vrf.md
+              - Bridge Domain: model/apic/tenants/bridge_domain.md
+              - L3out: model/apic/tenants/l3out.md
+              - External Endpoint Group: model/apic/tenants/external_endpoint_group.md
+              - Application Profile: model/apic/tenants/application_profile.md
+              - Endpoint Group: model/apic/tenants/endpoint_group.md
+              - Contract: model/apic/tenants/contract.md
+              - Imported Contract: model/apic/tenants/imported_contract.md
+              - Filter: model/apic/tenants/filter.md
+              - OSPF Interface Policy: model/apic/tenants/ospf_interface_policy.md
+              - BFD Interface Policy: model/apic/tenants/bfd_interface_policy.md
+              - BGP Address Family Context Policy: model/apic/tenants/bgp_address_family_context_policy.md
+              - DHCP Relay Policy: model/apic/tenants/dhcp_relay_policy.md
+              - DHCP Option Policy: model/apic/tenants/dhcp_option_policy.md
+              - Match Rule: model/apic/tenants/match_rule.md
+              - Set Rule: model/apic/tenants/set_rule.md
+              - BGP Timer Policy: model/apic/tenants/bgp_timer_policy.md
+              - BGP Peer Prefix Policy: model/apic/tenants/bgp_peer_prefix_policy.md
+              - BGP Best Path Policy: model/apic/tenants/bgp_best_path_policy.md
+              - QoS Policy: model/apic/tenants/qos_policy.md
+              - SPAN Source Group: model/apic/tenants/span_source_group.md
+              - SPAN Destination Group: model/apic/tenants/span_destination_group.md
+              - Redirect Policy: model/apic/tenants/redirect_policy.md
+              - Trust Control Policy: model/apic/tenants/trust_control_policy.md
+              - Service EPG Policy: model/apic/tenants/service_epg_policy.md
+              - Redirect Health Group: model/apic/tenants/redirect_health_group.md
+              - Redirect Backup Policy: model/apic/tenants/redirect_backup_policy.md
+              - L4L7 Device: model/apic/tenants/l4l7_device.md
+              - Service Graph Template: model/apic/tenants/service_graph_template.md
+              - Device Selection Policy: model/apic/tenants/device_selection_policy.md
+              - INB Endpoint Group: model/apic/tenants/inb_endpoint_group.md
+              - OOB Endpoint Group: model/apic/tenants/oob_endpoint_group.md
+              - OOB External Management Instance: model/apic/tenants/oob_ext_mgmt_instance.md
+              - OOB Contract: model/apic/tenants/oob_contract.md
+      - MSO:
+          - Bootstrap: model/mso/bootstrap/bootstrap.md
+          - System Config: model/mso/mso/system_config.md
+          - TACACS Provider: model/mso/mso/tacacs_provider.md
+          - Login Domain: model/mso/mso/login_domain.md
+          - Remote Location: model/mso/mso/remote_location.md
+          - User: model/mso/mso/user.md
+          - CA Certificate: model/mso/mso/ca_certificate.md
+          - Site: model/mso/mso/site.md
+          - Site Fabric Connectivity: model/mso/mso/fabric_connectivity.md
+          - Tenant: model/mso/mso/tenant.md
+          - Schema: model/mso/schema/schema.md
+          - DHCP Relay Policy: model/mso/mso/dhcp_relay.md
+          - DHCP Option Policy: model/mso/mso/dhcp_option.md
+  - Development:
+      - Testing: development/testing.md
+      - Extend Functionality: development/add_class.md
+  - Support: support.md
+  - Contributors: contributors.md

@@ -1,0 +1,21 @@
+---
+- name: Revert BUILD1-ACISIM2 to snapshot
+  community.vmware.vmware_guest_snapshot:
+    hostname: 10.51.77.1
+    username: svc_build1@vielab-vcenter.local
+    password: '{{ vmw_password }}'
+    validate_certs: no
+    folder: /Datacenter/vm/
+    datacenter: Datacenter
+    name: BUILD1-ACISIM2
+    state: revert
+    snapshot_name: '{{ snapshot }}'
+  vars:
+    vmw_password: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      32396265303231363335666463353163316465383161636362333432303931393663363764383032
+      3035303964653162623937393935323766616664663139390a643364643434623533366361633231
+      31663434333430666631613064306464623135646561626531616538353665393136366434616239
+      3638643832666631620a646537616130303661323462666366626261383231323033643931626635
+      3231
+  delegate_to: localhost

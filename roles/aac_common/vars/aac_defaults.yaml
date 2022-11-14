@@ -1,0 +1,10 @@
+---
+aac_defaults:
+  aac:
+    rendered_folder: '{{ playbook_dir }}/rendered/{{ inventory_dir | basename }}/{{ inventory_hostname }}/'
+    test_results_folder: '{{ playbook_dir }}/test_results/{{ inventory_dir | basename }}/{{ inventory_hostname }}/'
+  nae:
+    nae_port: 443
+    nae_ignore_smart_events:
+      - APP_EPG_NOT_DEPLOYED
+      - APP_EPG_HAS_NO_CONTRACT_IN_ENFORCED_VRF

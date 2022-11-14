@@ -1,0 +1,31 @@
+---
+- name: Create
+  hosts: mso
+  gather_facts: no
+
+  tasks:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Revert ACI Simulator to day2 state
+      include_tasks: '../../../../../common/test/tasks/revert_acisim2.yaml'
+      vars:
+        snapshot: 'Day2'
+
+    - name: Revert MSO to clean state
+      include_tasks: '../../../../../common/test/tasks/revert_mso1.yaml'
+      vars:
+        path: 'backups/5f0491f42900009600dd040d/restore'
+
+    - name: Cleanup old rendered folder
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}'
+        state: absent
+
+    - name: Cleanup old test results
+      ansible.builtin.file:
+        path: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        state: absent

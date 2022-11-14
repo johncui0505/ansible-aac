@@ -1,0 +1,33 @@
+---
+- name: Verify
+  hosts: mso
+  gather_facts: no
+
+  tasks:
+    - name: Load Defaults
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        vars_from: mso_defaults.yaml
+        public: yes
+
+    - name: Run Tests
+      block:
+        - name: Run Tests
+          vars:
+            test_report_name: "{{ lookup('env', 'MOLECULE_SCENARIO_NAME') }}"
+          ansible.builtin.include_role:
+            name: cisco.aac.test_mso_deploy
+
+      always:
+        - name: Create Common Test Results Directory
+          ansible.builtin.file:
+            path: "../../../../../test_results/lab/{{ inventory_hostname }}/mso_deploy/{{ lookup('env', 'MOLECULE_SCENARIO_NAME') }}/"
+            state: directory
+          register: results_dir
+
+        - name: Copy Test Results
+          ansible.posix.synchronize:
+            src: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+            dest: '{{ results_dir.path }}'
+            dirs: yes
+            recursive: no

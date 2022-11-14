@@ -1,0 +1,85 @@
+---
+- name: MSO Deploy Tests
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        vars_from: '{{ file }}'
+        public: yes
+      loop:
+        - mso_defaults.yaml
+        - mso_objects.yaml
+      loop_control:
+        loop_var: file
+
+    - name: Get MSO Changed Objects
+      cisco.aac.mso_diff:
+        mode: '{{ mso_mode | default("only_provided") }}'
+        current_inventory: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+        previous_inventory: '{% if previous_inventory is defined %}{{ previous_inventory }}/host_vars/{{ inventory_hostname }}{% endif %}'
+        objects: '{{ objects }}'
+      register: diff_result
+      tags: [print_action]
+
+    - name: Create Root Directory
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests'
+        state: directory
+
+    - name: Create Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item[0] }}/{{ item[1] }}'
+        state: directory
+      loop: '{{ diff_result.test_folders }}'
+
+    - name: Create Test Results Directory
+      ansible.builtin.file:
+        path: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        state: directory
+
+    - name: Render MSO Common
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        tasks_from: test_mso_render_common
+
+    - name: Render Tests
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        tasks_from: test_mso_render_stage
+      loop: '{{ diff_result.test_objects }}'
+
+    - name: MSO Login
+      cisco.aac.mso_login:
+        hostname: '{{ mso_host }}'
+        login_domain: '{{ mso_test_login_domain | default( mso_login_domain | default(omit)) }}'
+        username: '{{ mso_test_username | default(mso_username) }}'
+        password: '{{ mso_test_password | default(mso_password) }}'
+        validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+      register: mso_login
+
+    - name: Save MSO Token
+      ansible.builtin.copy:
+        content: "token = '{{ mso_login.token }}'"
+        dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/tests/mso_token.py'
+
+    - name: Run Tests
+      cisco.aac.aac_pabot:
+        tests: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/'
+        variable_file: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/tests/mso_token.py'
+        name: "{{ test_report_name | default('MSO') }}"
+        results_dir: '{{ test_results_folder | default(aac_defaults.aac.test_results_folder) }}'
+        output_file: output.xml
+        log_file: log.html
+        report_file: report.html
+        xunit_file: xunit.xml
+        skip_on_failure_tag: non-critical
+        run_empty_suites: True
+      when: '(diff_result.test_objects | length) > 0'
+      tags: [print_action]

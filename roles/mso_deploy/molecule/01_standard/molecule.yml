@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    ansible_connection_options:
+      connection: local
+platforms:
+  - name: mso1
+provisioner:
+  name: ansible
+  log: True
+  env:
+    ANSIBLE_COLLECTIONS_PATHS: '~/.ansible/collections:../../../../'
+  config_options:
+    defaults:
+      vars_plugins_enabled: cisco.aac.host_vars_merge
+  playbooks:
+    create: ../resources/playbooks/create.yaml
+    converge: ../resources/playbooks/playbook.yaml
+    verify: ../resources/playbooks/verify.yaml
+    destroy: ../resources/playbooks/destroy.yaml
+  inventory:
+    links:
+      hosts: ../../../../common/test/data/lab/hosts.yaml
+      group_vars: ../../../../common/test/data/lab/group_vars/
+      host_vars: ./data/host_vars/
+verifier:
+  name: ansible
+scenario:
+  test_sequence:
+    - syntax
+    - create
+    - converge
+    - idempotence
+    - verify
+    - destroy

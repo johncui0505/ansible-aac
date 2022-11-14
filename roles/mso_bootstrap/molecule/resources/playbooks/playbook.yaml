@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: mso
+  gather_facts: no
+
+  tasks:
+    - name: MSO Bootstrap
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_bootstrap

@@ -1,0 +1,12 @@
+---
+- name: Validate MSO Data
+  vars:
+    schema_path: '{{ role_path }}/files/mso_schema.yaml'
+    yaml_path: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+
+  block:
+    - name: Validate MSO Data
+      cisco.aac.aac_validate:
+        schema: '{{ schema_path }}'
+        dir: '{{ yaml_path }}'
+      tags: [print_action]

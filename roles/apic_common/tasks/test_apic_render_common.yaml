@@ -1,0 +1,6 @@
+---
+- name: 'RENDER TEST : Apic Common'
+  cisco.aac.template_local:
+    src: 'apic_common.robot'
+    dest: "{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}{{ test_folder | default('tests') }}/apic_common.resource"
+    lstrip_blocks: yes

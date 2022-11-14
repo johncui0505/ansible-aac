@@ -1,0 +1,15 @@
+---
+- name: Converge
+  hosts: localhost
+  gather_facts: no
+  vars:
+    yaml_paths:
+      ['../../../../mso_deploy/molecule/01_standard/data/host_vars/mso1']
+
+  tasks:
+    - name: MSO Validate
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_validate
+      loop: '{{ yaml_paths }}'
+      loop_control:
+        loop_var: yaml_path

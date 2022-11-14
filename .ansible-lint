@@ -1,0 +1,7 @@
+---
+skip_list:
+  - '204' # Line length > 160
+  - '208' # File permissions unset
+
+mock_modules:
+  - ansible.posix.synchronize

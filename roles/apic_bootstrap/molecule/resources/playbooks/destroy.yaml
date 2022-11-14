@@ -1,0 +1,6 @@
+---
+- name: Destroy
+  hosts: apic
+  gather_facts: no
+
+  tasks:

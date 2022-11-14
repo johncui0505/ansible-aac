@@ -1,0 +1,16 @@
+---
+- name: 'CONFIGURE : {{ object.name }} : {{ item }}'
+  cisco.aac.mso_rest:
+    hostname: '{{ mso_host }}'
+    login_domain: '{{ mso_login_domain | default(omit) }}'
+    username: '{{ mso_username }}'
+    password: '{{ mso_password }}'
+    validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+    path: '{{ object.api_path }}'
+    method: "{{ object.method | default('post_or_put') }}"
+    src: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/{{ object.template }}/{{ item }}.json'
+  register: configure_result
+  retries: 3
+  delay: 10
+  until: configure_result is succeeded
+  tags: [print_action]

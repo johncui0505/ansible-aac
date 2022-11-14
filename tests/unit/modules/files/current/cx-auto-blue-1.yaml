@@ -1,0 +1,151 @@
+---
+apic:
+  tenants:
+    - name: 'cx-auto-blue-1'
+      description:
+        Tenant blueprint (cx-auto-blue-1) for application centric and with
+        2 EPGs
+      vrfs:
+        - name: 'ONE'
+      bridge_domains:
+        - name: 'BD-1'
+          unknown_unicast: proxy
+          vrf: ONE
+          subnets:
+            - ip: 172.20.204.33/27
+              primary_ip: 'yes'
+              public: 'yes'
+              private: 'no'
+              shared: 'yes'
+              nd_ra_prefix: 'no'
+        - name: 'BD-2'
+          unknown_unicast: proxy
+          vrf: ONE
+          subnets:
+            - ip: 172.20.204.65/27
+              primary_ip: 'yes'
+              public: 'yes'
+              private: 'no'
+              shared: 'yes'
+              nd_ra_prefix: 'no'
+      application_profiles:
+        - name: 'Auto'
+          endpoint_groups:
+            - name: 'EPG-2'
+              bridge_domain: BD-2
+              physical_domains:
+                - PHY1
+              static_ports:
+                - node_id: 1101
+                  port: 5
+                  vlan: 315
+                - node_id: 1102
+                  pod_id: 2
+                  port: 5
+                  vlan: 315
+              subnets:
+                - ip: 172.20.204.65/27
+                  public: 'yes'
+                  private: 'no'
+                  shared: 'yes'
+                  nd_ra_prefix: 'no'
+                  no_default_gateway: 'yes'
+              contracts:
+                providers:
+                  - CON-L3O-ONE
+                  - CON-GODBOX-BLUE-1
+                  - CON-INTER-EPG
+                imported_consumers:
+                  - CON-infra-services
+            - name: 'EPG-1'
+              bridge_domain: BD-1
+              physical_domains:
+                - PHY1
+              static_ports:
+                - node_id: 1101
+                  port: 5
+                  vlan: 314
+                - node_id: 1102
+                  pod_id: 2
+                  port: 5
+                  vlan: 314
+              subnets:
+                - ip: 172.20.204.33/27
+                  public: 'yes'
+                  private: 'no'
+                  shared: 'yes'
+                  nd_ra_prefix: 'no'
+                  no_default_gateway: 'yes'
+              contracts:
+                consumers:
+                  - CON-INTER-EPG
+                providers:
+                  - CON-GODBOX-BLUE-1
+                  - CON-L3O-ONE
+      l3outs:
+        - name: 'L3O-ONE'
+          vrf: ONE
+          domain: ROUTED1
+          node_profiles:
+            - name: 'L3O-ONE_nodeProfile'
+              nodes:
+                - node_id: 1101
+                  router_id: 172.20.204.1
+                - node_id: 1102
+                  router_id: 172.20.204.2
+              interface_profiles:
+                - name: 'L3O-ONE_interfaceProfile'
+                  interfaces:
+                    - node_id: 1101
+                      port: 15
+                      ip: 172.20.204.11/31
+                      vlan: 86
+                      bgp_peers:
+                        - ip: 172.20.204.10
+                          remote_as: 64999
+                    - node_id: 1102
+                      pod_id: 2
+                      port: 15
+                      ip: 172.20.204.15/31
+                      vlan: 80
+                      bgp_peers:
+                        - ip: 172.20.204.14
+                          remote_as: 64999
+          external_endpoint_groups:
+            - name: 'L3O-ONE'
+              subnets:
+                - prefix: 0.0.0.0/0
+              contracts:
+                consumers:
+                  - CON-L3O-ONE
+          export_route_map:
+            contexts:
+              - name: 'L3O-ONE'
+                match_rule: MATCH-EPG-1-2
+      contracts:
+        - name: 'CON-GODBOX-BLUE-1'
+          scope: global
+          subjects:
+            - name: 'management'
+              filters:
+                - filter: FLT-SSH
+                - filter: FLT-http-https
+            - name: 'reachable'
+              filters:
+                - filter: icmp
+        - name: 'CON-L3O-ONE'
+          subjects:
+            - name: 'permit-all'
+              filters:
+                - filter: FLT-permit-any-any
+        - name: 'CON-INTER-EPG'
+          subjects:
+            - name: 'INTER-EPG'
+              filters:
+                - filter: FLT-permit-any-any
+      policies:
+        match_rules:
+          - name: 'MATCH-EPG-1-2'
+            prefixes:
+              - ip: 172.20.204.0/25
+                aggregate: true

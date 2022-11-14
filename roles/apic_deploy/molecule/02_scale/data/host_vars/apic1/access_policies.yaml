@@ -1,0 +1,246 @@
+---
+apic:
+  access_policies:
+    leaf_switch_profile_name: "LEAF\\g<id>"
+    leaf_switch_selector_name: "LEAF\\g<id>"
+    leaf_interface_profile_name: "LEAF\\g<id>"
+    leaf_interface_selector_name: "ETH\\g<mod>-\\g<port>"
+    fex_profile_name: "LEAF\\g<id>-FEX\\g<fex>"
+    fex_interface_selector_name: "ETH\\g<mod>-\\g<port>"
+    spine_switch_profile_name: "SPINE\\g<id>"
+    spine_switch_selector_name: "SPINE\\g<id>"
+    spine_interface_profile_name: "SPINE\\g<id>"
+    spine_interface_selector_name: "ETH\\g<mod>-\\g<port>"
+    vpc_group_name: "LEAF\\g<switch1_id>-\\g<switch2_id>"
+
+    infra_vlan: 4
+
+    span:
+      destination_groups:
+        - name: TAP1
+          description: My_SPAN_Destination
+          node_id: 101
+          port: 10
+        - name: TAP2
+          channel: PC1
+      source_groups:
+        - name: INT1
+          destination:
+            name: TAP1
+          sources:
+            - name: SRC1
+              direction: both
+              access_paths:
+                - node_id: 101
+                  port: 1
+                - node_id: 101
+                  port: 2
+                - node_id: 101
+                  port: 3
+            - name: SRC2
+              direction: both
+              access_paths:
+                - node_id: 101
+                  port: 20
+
+    mcp:
+      key: CiscoCisco
+    qos:
+      qos_classes:
+        - level: 2
+          admin_state: false
+          mtu: 1500
+          scheduling: strict-priority
+          bandwidth_percent: 0
+          congestion_algorithm: tail-drop
+        - level: 3
+
+    vlan_pools:
+      - name: STATIC1
+        allocation: static
+        ranges:
+          - from: 4000
+            to: 4002
+            allocation: inherit
+            role: external
+          - from: 4003
+      - name: STATIC2
+      - name: VMM1
+        allocation: dynamic
+        ranges:
+          - from: 2000
+            to: 2099
+      - name: ROUTED1
+        ranges:
+          - from: 4004
+      - name: ROUTED2
+
+    physical_domains:
+      - name: PHY1
+        vlan_pool: STATIC1
+      - name: PHY2
+        vlan_pool: STATIC2
+
+    routed_domains:
+      - name: ROUTED1
+        vlan_pool: ROUTED1
+      - name: ROUTED2
+        vlan_pool: ROUTED2
+
+    aaeps:
+      - name: AAEP1
+        infra_vlan: false
+        physical_domains:
+          - PHY1
+          - PHY2
+        routed_domains:
+          - ROUTED1
+          - ROUTED2
+        vmware_vmm_domains:
+          - VMM1
+      - name: AAEP2
+        infra_vlan: true
+
+    interface_policies:
+      cdp_policies:
+        - name: CDP-ENABLED
+          admin_state: true
+        - name: CDP-DISABLED
+          admin_state: false
+      lldp_policies:
+        - name: LLDP-ENABLED
+          admin_rx_state: true
+          admin_tx_state: true
+        - name: LLDP-DISABLED
+          admin_rx_state: false
+          admin_tx_state: false
+      link_level_policies:
+        - name: 10G
+          speed: 10G
+          auto: true
+          fec_mode: inherit
+        - name: 100G
+          speed: 100G
+      port_channel_policies:
+        - name: LACP-ACTIVE
+          mode: active
+          min_links: 1
+          max_links: 16
+          suspend_individual: true
+          graceful_convergence: true
+          fast_select_standby: true
+          load_defer: false
+          symmetric_hash: false
+          hash_key: 'src-ip'
+        - name: MAC-PINNING
+          mode: mac-pin
+      port_channel_member_policies:
+        - name: FAST
+          rate: fast
+          priority: 32768
+        - name: NORMAL
+          rate: normal
+      spanning_tree_policies:
+        - name: BPDU-FILTER
+          bpdu_filter: true
+        - name: BPDU-GUARD
+          bpdu_guard: true
+      mcp_policies:
+        - name: MCP-ENABLED
+          admin_state: true
+        - name: MCP-DISABLED
+          admin_state: false
+      l2_policies:
+        - name: PORT-LOCAL
+          vlan_scope: portlocal
+          qinq: disabled
+        - name: GLOBAL
+      storm_control_policies:
+        - name: 10P
+          description: My Desc
+          alias: 10P
+          broadcast_burst_pps: unspecified
+          broadcast_pps: unspecified
+          broadcast_burst_rate: 10
+          broadcast_rate: 10
+          multicast_burst_pps: unspecified
+          multicast_pps: unspecified
+          multicast_burst_rate: 10
+          multicast_rate: 10
+          unknown_unicast_burst_pps: unspecified
+          unknown_unicast_pps: unspecified
+          unknown_unicast_burst_rate: 10
+          unknown_unicast_rate: 10
+          action: drop
+        - name: 20P
+          broadcast_burst_rate: 20
+          broadcast_rate: 20
+
+    spine_interface_policy_groups:
+      - name: IPN1
+        link_level_policy: 10G
+        cdp_policy: CDP-ENABLED
+        aaep: AAEP1
+      - name: IPN2
+
+    switch_policies:
+      mst_policies:
+        - name: REGION1
+          region: region1
+          revision: 1
+          instances:
+            - name: INST-1
+              id: 1
+              vlan_ranges:
+                - from: 5
+                  to: 6
+      vpc_policies:
+        - name: VPC300
+          peer_dead_interval: 300
+      forwarding_scale_policies:
+        - name: HIGH-DUAL-STACK
+          profile: high-dual-stack
+        - name: DUAL-STACK
+          profile: dual-stack
+
+    leaf_switch_policy_groups:
+      - name: ALL_LEAFS
+        forwarding_scale_policy: HIGH-DUAL-STACK
+      - name: DUAL-STACK
+        forwarding_scale_policy: DUAL-STACK
+
+    leaf_interface_policy_groups:
+      - name: ACC1
+        type: access
+        link_level_policy: 10G
+        cdp_policy: CDP-ENABLED
+        lldp_policy: LLDP-ENABLED
+        spanning_tree_policy: BPDU-FILTER
+        mcp_policy: MCP-ENABLED
+        l2_policy: PORT-LOCAL
+        storm_control_policy: 10P
+        port_channel_policy: LACP-ACTIVE
+        port_channel_member_policy: FAST
+        aaep: AAEP1
+      - name: PC1
+        type: vpc
+        link_level_policy: 10G
+        cdp_policy: CDP-ENABLED
+        lldp_policy: LLDP-ENABLED
+        spanning_tree_policy: BPDU-FILTER
+        mcp_policy: MCP-ENABLED
+        l2_policy: PORT-LOCAL
+        port_channel_policy: LACP-ACTIVE
+        port_channel_member_policy: FAST
+        aaep: AAEP1
+      - name: VPC1
+        type: vpc
+        link_level_policy: 10G
+        cdp_policy: CDP-ENABLED
+        lldp_policy: LLDP-ENABLED
+        spanning_tree_policy: BPDU-FILTER
+        mcp_policy: MCP-ENABLED
+        l2_policy: PORT-LOCAL
+        port_channel_policy: LACP-ACTIVE
+        port_channel_member_policy: FAST
+        aaep: AAEP1

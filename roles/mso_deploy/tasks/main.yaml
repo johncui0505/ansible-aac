@@ -1,0 +1,70 @@
+---
+- name: MSO Deploy Tasks
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        vars_from: '{{ file }}'
+        public: yes
+      loop:
+        - mso_defaults.yaml
+        - mso_objects.yaml
+      loop_control:
+        loop_var: file
+
+    - name: Get MSO Changed Objects
+      cisco.aac.mso_diff:
+        mode: '{{ mso_mode | default("only_provided") }}'
+        current_inventory: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+        previous_inventory: '{% if previous_inventory is defined %}{{ previous_inventory }}/host_vars/{{ inventory_hostname }}{% endif %}'
+        objects: '{{ objects }}'
+      register: diff_result
+      tags: [print_action]
+
+    - name: Create Directories
+      ansible.builtin.file:
+        path: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}config/{{ item.template }}/'
+        state: directory
+      loop: '{{ diff_result.objects }}'
+
+    - name: Render Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        tasks_from: mso_render_stage
+      loop: '{{ diff_result.objects }}'
+      loop_control:
+        loop_var: object
+      when: mso_option_render | default(defaults.aci.mso_option_render)
+
+    - name: Configure Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        tasks_from: mso_config_stage
+      loop: '{{ diff_result.objects }}'
+      loop_control:
+        loop_var: object
+      when: mso_option_configure | default(defaults.aci.mso_option_configure)
+
+    - name: Delete Stage
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        tasks_from: mso_delete_stage
+      loop: '{{ diff_result.objects[::-1] }}'
+      loop_control:
+        loop_var: object
+      when: (mso_option_delete | default(defaults.aci.mso_option_delete)) and (object.delete | default(true))
+
+    - name: Deploy Templates
+      include_tasks: mso_deploy_template.yaml
+      loop: "{{ diff_result.schemas if diff_result.schemas is defined else (mso | community.general.json_query('schemas[*].name') | default([]) ) if mso is defined else [] }}"
+      loop_control:
+        loop_var: schema
+      when: mso_option_deploy | default(defaults.aci.mso_option_deploy)
+      tags: [molecule-idempotence-notest]

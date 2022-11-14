@@ -1,0 +1,8 @@
+---
+- name: 'RENDER TEST : {{ taskprefix | default() }}{{ item[0].name }}'
+  cisco.aac.template_local:
+    src: '{{ item[0].type }}/{{ item[0].folder }}/{{ item[0].template }}.robot'
+    dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}tests/{{ item[0].type }}/{{ item[0].folder }}/{{ item[2] | default() }}{{ item[1] | default() | string }}/{{ item[0].template }}.robot'
+    lstrip_blocks: yes
+  register: render_result
+  tags: [print_action]

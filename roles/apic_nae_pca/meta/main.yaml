@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: Daniel Schmidt
+  description: Ansible role to run NAE (Network Assurance Engine) Pre-Change Analysis
+  company: Cisco
+  license: LICENSE
+  min_ansible_version: 2.10
+  platforms:
+    - name: All
+      versions:
+        - all
+dependencies:
+  - role: apic_common

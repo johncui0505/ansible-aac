@@ -1,0 +1,211 @@
+---
+kind: pipeline
+type: docker
+name: Pipeline
+
+concurrency:
+  limit: 1
+
+environment:
+  PY_COLORS: '1'
+  ANSIBLE_FORCE_COLOR: '1'
+
+trigger:
+  branch:
+    - master
+
+clone:
+  disable: true
+
+steps:
+  - name: Clone Repo
+    image: drone/git
+    pull: if-not-exists
+
+  - name: Build Collection
+    image: danischm/aac:0.3.4
+    commands:
+      - ansible-galaxy collection build --force --output-path ".cache/collection-tarballs"
+    depends_on:
+      - Clone Repo
+
+  - name: Lint
+    image: danischm/aac:0.3.4
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - flake8
+      - black --check .
+      - yamllint -s .
+      - ansible-lint roles/*
+    when:
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - Build Collection
+
+  - name: Execute Unit Tests
+    image: danischm/aac:0.3.4
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - export PYTHONPATH=$PWD/plugins:/root/.ansible/collections
+      - pytest --color yes tests/unit/
+    depends_on:
+      - Lint
+
+  - name: APIC Test
+    image: danischm/aac:0.3.4
+    environment:
+      ANSIBLE_VAULT_PASSWORD:
+        from_secret: ANSIBLE_VAULT_PASSWORD
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - export ANSIBLE_VAULT_PASSWORD_FILE=$PWD/common/test/bin/vault-env
+      - cd roles/apic_bootstrap
+      - molecule test -s 00_standard
+      # - cd ../apic_deploy
+      # - molecule test -s 01_standard
+    when:
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - Lint
+
+  - name: MSO Test
+    image: danischm/aac:0.3.4
+    environment:
+      ANSIBLE_VAULT_PASSWORD:
+        from_secret: ANSIBLE_VAULT_PASSWORD
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - export ANSIBLE_VAULT_PASSWORD_FILE=$PWD/common/test/bin/vault-env
+      - cd roles/mso_bootstrap
+      - molecule test -s 01_standard
+      # - cd ../mso_deploy
+      # - molecule test -s 01_standard
+    when:
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - Lint
+
+  - name: Validate Test
+    image: danischm/aac:0.3.4
+    environment:
+      ANSIBLE_VAULT_PASSWORD:
+        from_secret: ANSIBLE_VAULT_PASSWORD
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - export ANSIBLE_VAULT_PASSWORD_FILE=$PWD/common/test/bin/vault-env
+      - cd roles/apic_validate
+      - molecule test --all
+      - cd ../mso_validate
+      - molecule test --all
+    when:
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - Lint
+
+  - name: Render Test Reports
+    image: danischm/aac:0.3.4
+    environment:
+      ANSIBLE_VAULT_PASSWORD:
+        from_secret: ANSIBLE_VAULT_PASSWORD
+    commands:
+      - ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      - cd playbooks
+      - ansible-playbook -i ../common/test/data/lab/hosts.yaml create_apic_test_report.yaml
+      - ansible-playbook -i ../common/test/data/lab/hosts.yaml create_mso_test_report.yaml
+    when:
+      status: [changed, failure, success]
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - APIC Test
+      - MSO Test
+
+  - name: Upload Artifacts
+    image: jmccann/drone-artifactory:3.3
+    settings:
+      username: as-deployer
+      password:
+        from_secret: ARTIFACTORY_PASSWORD
+      url: https://engci-maven.cisco.com/artifactory
+      actions:
+        - action: upload
+          path: AS-release/Community/netascode/ansible-aac/${DRONE_BUILD_NUMBER}/
+          flat: false
+          sources:
+            - test_results/*.*
+    when:
+      status: [changed, failure, success]
+      event:
+        exclude:
+          - tag
+    depends_on:
+      - Render Test Reports
+
+  - name: Publish Documentation
+    image: danischm/aac:0.3.4
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+    commands:
+      - cd docs
+      - python3 aac-doc.py apic -s "../roles/apic_validate/files/apic_schema.yaml" -o "../roles/apic_common/vars/apic_objects.yaml" -d "../roles/apic_common/vars/apic_defaults.yaml"
+      - python3 aac-doc.py mso -s "../roles/mso_validate/files/mso_schema.yaml" -o "../roles/mso_common/vars/mso_objects.yaml" -d "../roles/mso_common/vars/mso_defaults.yaml"
+      - cd ..
+      - git config credential.helper "store --file=.git/credentials"
+      - echo "https://$GITHUB_TOKEN:@wwwin-github.cisco.com" > .git/credentials
+      - mkdocs gh-deploy --force
+    when:
+      branch:
+        - master
+      event:
+        - push
+    depends_on:
+      - Upload Artifacts
+
+  - name: Publish Release
+    image: plugins/github-release
+    pull: if-not-exists
+    settings:
+      base_url: https://wwwin-github.cisco.com/api/v3/
+      upload_url: https://wwwin-github.cisco.com/api/uploads/
+      api_key:
+        from_secret: GITHUB_TOKEN
+      files: .cache/collection-tarballs/*.tar.gz
+    when:
+      event:
+        - tag
+    depends_on:
+      - Publish Documentation
+
+  - name: Notify
+    image: ciscosso/drone-webex-team:v0.0.1
+    settings:
+      pull: true
+      room: 'AAC Builds'
+      room_id: 'Y2lzY29zcGFyazovL3VzL1JPT00vNTFmMGNmODAtYjI0My0xMWU5LTljZjUtNWY0NGQ2ZTlmYWY0'
+      access_token:
+        from_secret: SPARK_ACCESS_TOKEN
+      body: |
+        [**[{{ build.status }}] {{ repo.owner }}/{{ repo.name }} #{{ build.number }}**]({{ build.link }})
+        * Commit: [{{ commit.message }}]({{ commit.link }})
+        * Author: {{ commit.author.name }} {{ commit.author.email }}
+        * Branch: {{ commit.branch }}
+        * Event: {{ build.event }}
+        * Started at: {{ datetime build.created "Mon Jan 2 15:04:05 MST 2006" "Local" }}
+        * Test Reports: [APIC](https://engci-maven-master.cisco.com/artifactory/list/AS-release/Community/netascode/ansible-aac/{{ build.number }}/test_results/apic_log.html) [MSO](https://engci-maven-master.cisco.com/artifactory/list/AS-release/Community/netascode/ansible-aac/{{ build.number }}/test_results/mso_log.html)
+    when:
+      status: [changed, failure, success]
+    depends_on:
+      - Publish Documentation
+      - Publish Release
+      - Validate Test
+      - Execute Unit Tests

@@ -1,0 +1,44 @@
+---
+- name: Run NAE Pre-Change Analysis
+
+  block:
+    - name: Load Common Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.aac_common
+        vars_from: aac_defaults.yaml
+        public: yes
+
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        vars_from: apic_defaults.yaml
+        public: yes
+
+    - name: Consolidate rendered configs
+      cisco.aac.aci_nae_prepare:
+        changed_dir: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/config'
+        dest: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/nae.json'
+
+    - name: Trigger a new NAE Pre-Change Analysis
+      cisco.nae.nae_prechange:
+        host: '{{ nae_host }}'
+        port: '{{ nae_port | default(aac_defaults.nae.nae_port) }}'
+        username: '{{ nae_username }}'
+        password: '{{ nae_password }}'
+        ag_name: '{{ apic.nae_assurance_group }}'
+        file: '{{ rendered_folder | default(aac_defaults.aac.rendered_folder) }}/nae.json'
+        name: "{{ nae_pca_name | default('aac') }}"
+        state: present
+      delegate_to: localhost
+
+    - name: Wait for Pre-Change Analysis results
+      cisco.nae.nae_prechange:
+        host: '{{ nae_host }}'
+        port: '{{ nae_port | default(aac_defaults.nae.nae_port) }}'
+        username: '{{ nae_username }}'
+        password: '{{ nae_password }}'
+        ag_name: '{{ apic.nae_assurance_group }}'
+        name: "{{ nae_pca_name | default('aac') }}"
+        state: query
+        verify: true
+        ignore_sm: '{{ nae_ignore_smart_events | default(aac_defaults.nae.nae_ignore_smart_events) }}'

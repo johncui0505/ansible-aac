@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: apic
+  gather_facts: no
+
+  tasks:
+    - name: APIC Bootstrap
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_bootstrap

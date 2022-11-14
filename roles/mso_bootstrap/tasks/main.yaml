@@ -1,0 +1,82 @@
+---
+- name: MSO Bootstrap Tasks
+  vars:
+    mso_common: &mso_common
+      hostname: '{{ mso_host }}'
+      username: '{{ mso.bootstrap.admin_username | default(defaults.mso.bootstrap.admin_username) }}'
+      password: '{{ mso.bootstrap.admin_password }}'
+      validate_certs: '{{ mso_validate_certs | default(defaults.aci.mso_validate_certs) }}'
+
+  block:
+    - name: Load Defaults
+      ansible.builtin.include_role:
+        name: cisco.aac.mso_common
+        vars_from: mso_defaults.yaml
+        public: yes
+
+    - name: 'GET : Keyring'
+      cisco.aac.mso_rest:
+        <<: *mso_common
+        path: 'platform/security/keyrings'
+        method: get
+      when: 'mso.bootstrap.keyring.name is defined'
+      register: result
+      tags: [print_action]
+
+    - name: 'DELETE : Keyring'
+      cisco.aac.mso_rest:
+        <<: *mso_common
+        path: 'platform/security/keyrings/%%platform/security/keyrings%{{ mso.bootstrap.keyring.name }}%%'
+        method: delete
+      when: 'mso.bootstrap.keyring.name is defined and result.current | community.general.json_query("keyrings[?name==`" ~ mso.bootstrap.keyring.name ~ "`]") | length > 0'
+      tags: [print_action]
+
+    - name: 'CONFIGURE : Keyring'
+      cisco.aac.mso_rest:
+        <<: *mso_common
+        path: platform/security/keyrings
+        method: post
+        content:
+          name: '{{ mso.bootstrap.keyring.name }}'
+          description: '{{ mso.bootstrap.keyring.description | default() }}'
+          cert: '{{ mso.bootstrap.keyring.certificate }}'
+          privateKey: '{{ mso.bootstrap.keyring.private_key }}'
+          caName: '{{ mso.bootstrap.keyring.ca_name | default() }}'
+      when: 'mso.bootstrap.keyring.name is defined'
+      tags: [print_action]
+
+    - name: 'CONFIGURE : Ansible User'
+      cisco.aac.mso_rest:
+        <<: *mso_common
+        path: users
+        method: post_or_put
+        content:
+          username: '{{ mso_username }}'
+          password: '{{ mso_password }}'
+          accountStatus: '{{ defaults.mso.users.status }}'
+          firstName: '{{ defaults.mso.bootstrap.ansible_user_first_name }}'
+          lastName: '{{ defaults.mso.bootstrap.ansible_user_last_name }}'
+          emailAddress: '{{ defaults.mso.bootstrap.ansible_user_email }}'
+          roles:
+            - roleId: '%%roles%powerUser%%'
+              accessType: 'readWrite'
+      when: 'mso_username != "admin"'
+      tags: [print_action]
+
+    - name: 'CONFIGURE : Test User'
+      cisco.aac.mso_rest:
+        <<: *mso_common
+        path: users
+        method: post_or_put
+        content:
+          username: '{{ mso_test_username }}'
+          password: '{{ mso_test_password | default(mso_password) }}'
+          accountStatus: '{{ defaults.mso.users.status }}'
+          firstName: '{{ defaults.mso.bootstrap.test_user_first_name }}'
+          lastName: '{{ defaults.mso.bootstrap.test_user_last_name }}'
+          emailAddress: '{{ defaults.mso.bootstrap.test_user_email }}'
+          roles:
+            - roleId: '%%roles%powerUser%%'
+              accessType: 'readOnly'
+      when: 'mso_test_username is defined and mso_test_username != "admin"'
+      tags: [print_action]

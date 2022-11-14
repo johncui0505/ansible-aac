@@ -1,0 +1,14 @@
+---
+- name: Validate APIC Data
+  vars:
+    schema_path: '{{ role_path }}/files/apic_schema.yaml'
+    rules_path: '{{ role_path }}/files/rules/'
+    yaml_path: '{{ inventory_dir }}/host_vars/{{ inventory_hostname }}'
+
+  block:
+    - name: Validate APIC Data
+      cisco.aac.aac_validate:
+        schema: '{{ schema_path }}'
+        rules: '{{ rules_path }}'
+        dir: '{{ yaml_path }}'
+      tags: [print_action]

@@ -1,0 +1,215 @@
+---
+- name: Bootstrap Tasks
+  vars:
+    aci_common: &aci_common
+      hostname: '{{ apic_host }}'
+      username: '{{ apic.bootstrap.admin_username | default(defaults.apic.bootstrap.admin_username) }}'
+      password: '{{ apic.bootstrap.admin_password }}'
+      use_proxy: '{{ apic_use_proxy | default(defaults.aci.apic_use_proxy) }}'
+      validate_certs: '{{ apic_validate_certs | default(defaults.aci.apic_validate_certs) }}'
+    aci_write_all: &aci_write_all
+      aaaUserDomain:
+        attributes:
+          name: all
+        children:
+          - aaaUserRole:
+              attributes:
+                name: admin
+                privType: writePriv
+    aci_read_all: &aci_read_all
+      aaaUserDomain:
+        attributes:
+          name: all
+        children:
+          - aaaUserRole:
+              attributes:
+                name: admin
+                privType: readPriv
+
+  block:
+    - name: Load Variables
+      ansible.builtin.include_role:
+        name: cisco.aac.apic_common
+        vars_from: apic_defaults.yaml
+        public: yes
+
+    - name: Delete existing ansible user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_username }}'
+        state: absent
+      no_log: True
+      register: result
+      retries: 3
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add ansible user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_username }}'
+        aaa_password: "{{ apic_password | default(lookup('password', '/dev/null length=32') ~ 'Aa1!') }}"
+        expiration: never
+        expires: no
+      no_log: True
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add domain to ansible user
+      aci_rest:
+        <<: *aci_common
+        path: '/api/node/mo/uni/userext/user-{{ apic_username }}.json'
+        method: post
+        content:
+          <<: *aci_write_all
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add cert to ansible user
+      aci_aaa_user_certificate:
+        <<: *aci_common
+        aaa_user: '{{ apic_username }}'
+        name: '{{ apic_username }}'
+        certificate_data: '{{ apic_public_cert }}'
+      when: apic_password is not defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Delete existing test user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_test_username }}'
+        state: absent
+      no_log: True
+      when: apic_test_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add test user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_test_username }}'
+        aaa_password: '{{ apic_test_password }}'
+        expiration: never
+        expires: no
+      no_log: True
+      when: apic_test_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add domain to test user
+      aci_rest:
+        <<: *aci_common
+        path: '/api/node/mo/uni/userext/user-{{ apic_test_username }}.json'
+        method: post
+        content:
+          <<: *aci_read_all
+      when: apic_test_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Delete existing mso user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_mso_username }}'
+        state: absent
+      no_log: True
+      when: apic_mso_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add mso user
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic_mso_username }}'
+        aaa_password: '{{ apic_mso_password }}'
+        expiration: never
+        expires: no
+      no_log: True
+      when: apic_mso_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Add domain to mso user
+      aci_rest:
+        <<: *aci_common
+        path: '/api/node/mo/uni/userext/user-{{ apic_mso_username }}.json'
+        method: post
+        content:
+          <<: *aci_write_all
+      when: apic_mso_username is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Configure encryption passphrase for config import/export
+      aci_rest:
+        <<: *aci_common
+        path: /api/node/mo/uni/exportcryptkey.json
+        method: post
+        content:
+          pkiExportEncryptionKey:
+            attributes:
+              strongEncryptionEnabled: 'true'
+              passphrase: '{{ apic.bootstrap.config_passphrase }}'
+      when: apic.bootstrap.config_passphrase is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Update admin user password
+      aci_aaa_user:
+        <<: *aci_common
+        aaa_user: '{{ apic.bootstrap.admin_username | default(defaults.apic.bootstrap.admin_username) }}'
+        aaa_password: '{{ apic_admin_password }}'
+        expiration: never
+        expires: no
+      when: apic_admin_password is defined and apic_admin_password != apic.bootstrap.admin_password
+      no_log: True
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]
+
+    - name: Delete default objects
+      aci_rest:
+        <<: *aci_common
+        path: '{{ item.dn }}'
+        method: delete
+      with_items: '{{ apic.bootstrap.objects_to_delete | default([]) }}'
+      when: apic.bootstrap.objects_to_delete is defined
+      register: result
+      retries: 2
+      delay: 3
+      until: result is succeeded
+      tags: [print_action]

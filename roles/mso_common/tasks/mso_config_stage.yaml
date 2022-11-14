@@ -1,0 +1,5 @@
+---
+- name: 'CONFIGURE : {{ object.name }}'
+  include_tasks: mso_config_stage_task.yaml
+  loop: "{{ q('items', object.diff_object_ids) }}"
+  when: item | length > 0

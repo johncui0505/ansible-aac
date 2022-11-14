@@ -1,0 +1,1303 @@
+---
+apic:
+  node_policies:
+    inb_endpoint_group: INB
+    oob_endpoint_group: OOB
+    update_groups:
+      - name: MG1
+      - name: MG2
+    vpc_groups:
+      mode: explicit
+      groups:
+        - id: 101
+          switch_1: 101
+          switch_2: 102
+          policy: default
+        - id: 103
+          switch_1: 103
+          switch_2: 104
+        - id: 105
+          switch_1: 105
+          switch_2: 106
+        - id: 107
+          switch_1: 107
+          switch_2: 108
+        - id: 109
+          switch_1: 109
+          switch_2: 110
+        - id: 111
+          switch_1: 111
+          switch_2: 112
+        - id: 113
+          switch_1: 113
+          switch_2: 114
+        - id: 115
+          switch_1: 115
+          switch_2: 116
+        - id: 117
+          switch_1: 117
+          switch_2: 118
+        - id: 119
+          switch_1: 119
+          switch_2: 120
+        - id: 121
+          switch_1: 121
+          switch_2: 122
+        - id: 123
+          switch_1: 123
+          switch_2: 124
+        - id: 125
+          switch_1: 125
+          switch_2: 126
+        - id: 127
+          switch_1: 127
+          switch_2: 128
+        - id: 129
+          switch_1: 129
+          switch_2: 130
+        - id: 131
+          switch_1: 131
+          switch_2: 132
+        - id: 133
+          switch_1: 133
+          switch_2: 134
+        - id: 135
+          switch_1: 135
+          switch_2: 136
+        - id: 137
+          switch_1: 137
+          switch_2: 138
+        - id: 139
+          switch_1: 139
+          switch_2: 140
+        - id: 141
+          switch_1: 141
+          switch_2: 142
+        - id: 143
+          switch_1: 143
+          switch_2: 144
+        - id: 145
+          switch_1: 145
+          switch_2: 146
+        - id: 147
+          switch_1: 147
+          switch_2: 148
+        - id: 149
+          switch_1: 149
+          switch_2: 150
+        - id: 151
+          switch_1: 151
+          switch_2: 152
+        - id: 153
+          switch_1: 153
+          switch_2: 154
+        - id: 155
+          switch_1: 155
+          switch_2: 156
+        - id: 157
+          switch_1: 157
+          switch_2: 158
+        - id: 159
+          switch_1: 159
+          switch_2: 160
+        - id: 161
+          switch_1: 161
+          switch_2: 162
+        - id: 163
+          switch_1: 163
+          switch_2: 164
+        - id: 165
+          switch_1: 165
+          switch_2: 166
+        - id: 167
+          switch_1: 167
+          switch_2: 168
+        - id: 169
+          switch_1: 169
+          switch_2: 170
+        - id: 171
+          switch_1: 171
+          switch_2: 172
+        - id: 173
+          switch_1: 173
+          switch_2: 174
+        - id: 175
+          switch_1: 175
+          switch_2: 176
+        - id: 177
+          switch_1: 177
+          switch_2: 178
+        - id: 179
+          switch_1: 179
+          switch_2: 180
+        - id: 181
+          switch_1: 181
+          switch_2: 182
+        - id: 183
+          switch_1: 183
+          switch_2: 184
+        - id: 185
+          switch_1: 185
+          switch_2: 186
+        - id: 187
+          switch_1: 187
+          switch_2: 188
+        - id: 189
+          switch_1: 189
+          switch_2: 190
+        - id: 191
+          switch_1: 191
+          switch_2: 192
+        - id: 193
+          switch_1: 193
+          switch_2: 194
+        - id: 195
+          switch_1: 195
+          switch_2: 196
+        - id: 197
+          switch_1: 197
+          switch_2: 198
+        - id: 199
+          switch_1: 199
+          switch_2: 200
+    nodes:
+      - id: 101
+        role: leaf
+        serial_number: TEP-1-101
+        name: LEAF101
+        oob_address: 10.51.77.94/24
+        oob_gateway: 10.51.77.254
+        inb_address: 1.1.1.10/24
+        inb_gateway: 1.1.1.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 102
+        role: leaf
+        serial_number: TEP-1-102
+        name: LEAF102
+        oob_address: 10.51.77.95/24
+        oob_gateway: 10.51.77.254
+        inb_address: 1.1.1.11/24
+        inb_gateway: 1.1.1.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 103
+        role: leaf
+        serial_number: TEP-2-103
+        name: LEAF103
+        oob_address: 2.2.2.3/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.3/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 104
+        role: leaf
+        serial_number: TEP-2-104
+        name: LEAF104
+        oob_address: 2.2.2.4/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.4/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 105
+        role: leaf
+        serial_number: TEP-2-105
+        name: LEAF105
+        oob_address: 2.2.2.5/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.5/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 106
+        role: leaf
+        serial_number: TEP-2-106
+        name: LEAF106
+        oob_address: 2.2.2.6/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.6/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 107
+        role: leaf
+        serial_number: TEP-2-107
+        name: LEAF107
+        oob_address: 2.2.2.7/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.7/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 108
+        role: leaf
+        serial_number: TEP-2-108
+        name: LEAF108
+        oob_address: 2.2.2.8/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.8/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 109
+        role: leaf
+        serial_number: TEP-2-109
+        name: LEAF109
+        oob_address: 2.2.2.9/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.9/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 110
+        role: leaf
+        serial_number: TEP-2-110
+        name: LEAF110
+        oob_address: 2.2.2.10/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.10/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 111
+        role: leaf
+        serial_number: TEP-2-111
+        name: LEAF111
+        oob_address: 2.2.2.11/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.11/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 112
+        role: leaf
+        serial_number: TEP-2-112
+        name: LEAF112
+        oob_address: 2.2.2.12/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.12/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 113
+        role: leaf
+        serial_number: TEP-2-113
+        name: LEAF113
+        oob_address: 2.2.2.13/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.13/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 114
+        role: leaf
+        serial_number: TEP-2-114
+        name: LEAF114
+        oob_address: 2.2.2.14/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.14/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 115
+        role: leaf
+        serial_number: TEP-2-115
+        name: LEAF115
+        oob_address: 2.2.2.15/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.15/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 116
+        role: leaf
+        serial_number: TEP-2-116
+        name: LEAF116
+        oob_address: 2.2.2.16/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.16/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 117
+        role: leaf
+        serial_number: TEP-2-117
+        name: LEAF117
+        oob_address: 2.2.2.17/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.17/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 118
+        role: leaf
+        serial_number: TEP-2-118
+        name: LEAF118
+        oob_address: 2.2.2.18/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.18/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 119
+        role: leaf
+        serial_number: TEP-2-119
+        name: LEAF119
+        oob_address: 2.2.2.19/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.19/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 120
+        role: leaf
+        serial_number: TEP-2-120
+        name: LEAF120
+        oob_address: 2.2.2.20/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.20/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 121
+        role: leaf
+        serial_number: TEP-2-121
+        name: LEAF121
+        oob_address: 2.2.2.21/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.21/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 122
+        role: leaf
+        serial_number: TEP-2-122
+        name: LEAF122
+        oob_address: 2.2.2.22/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.22/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 123
+        role: leaf
+        serial_number: TEP-2-123
+        name: LEAF123
+        oob_address: 2.2.2.23/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.23/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 124
+        role: leaf
+        serial_number: TEP-2-124
+        name: LEAF124
+        oob_address: 2.2.2.24/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.24/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 125
+        role: leaf
+        serial_number: TEP-2-125
+        name: LEAF125
+        oob_address: 2.2.2.25/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.25/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 126
+        role: leaf
+        serial_number: TEP-2-126
+        name: LEAF126
+        oob_address: 2.2.2.26/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.26/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 127
+        role: leaf
+        serial_number: TEP-2-127
+        name: LEAF127
+        oob_address: 2.2.2.27/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.27/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 128
+        role: leaf
+        serial_number: TEP-2-128
+        name: LEAF128
+        oob_address: 2.2.2.28/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.28/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 129
+        role: leaf
+        serial_number: TEP-2-129
+        name: LEAF129
+        oob_address: 2.2.2.29/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.29/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 130
+        role: leaf
+        serial_number: TEP-2-130
+        name: LEAF130
+        oob_address: 2.2.2.30/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.30/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 131
+        role: leaf
+        serial_number: TEP-2-131
+        name: LEAF131
+        oob_address: 2.2.2.31/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.31/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 132
+        role: leaf
+        serial_number: TEP-2-132
+        name: LEAF132
+        oob_address: 2.2.2.32/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.32/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 133
+        role: leaf
+        serial_number: TEP-2-133
+        name: LEAF133
+        oob_address: 2.2.2.33/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.33/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 134
+        role: leaf
+        serial_number: TEP-2-134
+        name: LEAF134
+        oob_address: 2.2.2.34/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.34/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 135
+        role: leaf
+        serial_number: TEP-2-135
+        name: LEAF135
+        oob_address: 2.2.2.35/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.35/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 136
+        role: leaf
+        serial_number: TEP-2-136
+        name: LEAF136
+        oob_address: 2.2.2.36/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.36/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 137
+        role: leaf
+        serial_number: TEP-2-137
+        name: LEAF137
+        oob_address: 2.2.2.37/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.37/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 138
+        role: leaf
+        serial_number: TEP-2-138
+        name: LEAF138
+        oob_address: 2.2.2.38/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.38/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 139
+        role: leaf
+        serial_number: TEP-2-139
+        name: LEAF139
+        oob_address: 2.2.2.39/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.39/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 140
+        role: leaf
+        serial_number: TEP-2-140
+        name: LEAF140
+        oob_address: 2.2.2.40/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.40/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 141
+        role: leaf
+        serial_number: TEP-2-141
+        name: LEAF141
+        oob_address: 2.2.2.41/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.41/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 142
+        role: leaf
+        serial_number: TEP-2-142
+        name: LEAF142
+        oob_address: 2.2.2.42/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.42/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 143
+        role: leaf
+        serial_number: TEP-2-143
+        name: LEAF143
+        oob_address: 2.2.2.43/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.43/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 144
+        role: leaf
+        serial_number: TEP-2-144
+        name: LEAF144
+        oob_address: 2.2.2.44/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.44/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 145
+        role: leaf
+        serial_number: TEP-2-145
+        name: LEAF145
+        oob_address: 2.2.2.45/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.45/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 146
+        role: leaf
+        serial_number: TEP-2-146
+        name: LEAF146
+        oob_address: 2.2.2.46/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.46/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 147
+        role: leaf
+        serial_number: TEP-2-147
+        name: LEAF147
+        oob_address: 2.2.2.47/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.47/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 148
+        role: leaf
+        serial_number: TEP-2-148
+        name: LEAF148
+        oob_address: 2.2.2.48/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.48/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 149
+        role: leaf
+        serial_number: TEP-2-149
+        name: LEAF149
+        oob_address: 2.2.2.49/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.49/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 150
+        role: leaf
+        serial_number: TEP-2-150
+        name: LEAF150
+        oob_address: 2.2.2.50/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.50/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 151
+        role: leaf
+        serial_number: TEP-2-151
+        name: LEAF151
+        oob_address: 2.2.2.51/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.51/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 152
+        role: leaf
+        serial_number: TEP-2-152
+        name: LEAF152
+        oob_address: 2.2.2.52/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.52/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 153
+        role: leaf
+        serial_number: TEP-2-153
+        name: LEAF153
+        oob_address: 2.2.2.53/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.53/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 154
+        role: leaf
+        serial_number: TEP-2-154
+        name: LEAF154
+        oob_address: 2.2.2.54/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.54/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 155
+        role: leaf
+        serial_number: TEP-2-155
+        name: LEAF155
+        oob_address: 2.2.2.55/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.55/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 156
+        role: leaf
+        serial_number: TEP-2-156
+        name: LEAF156
+        oob_address: 2.2.2.56/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.56/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 157
+        role: leaf
+        serial_number: TEP-2-157
+        name: LEAF157
+        oob_address: 2.2.2.57/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.57/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 158
+        role: leaf
+        serial_number: TEP-2-158
+        name: LEAF158
+        oob_address: 2.2.2.58/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.58/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 159
+        role: leaf
+        serial_number: TEP-2-159
+        name: LEAF159
+        oob_address: 2.2.2.59/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.59/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 160
+        role: leaf
+        serial_number: TEP-2-160
+        name: LEAF160
+        oob_address: 2.2.2.60/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.60/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 161
+        role: leaf
+        serial_number: TEP-2-161
+        name: LEAF161
+        oob_address: 2.2.2.61/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.61/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 162
+        role: leaf
+        serial_number: TEP-2-162
+        name: LEAF162
+        oob_address: 2.2.2.62/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.62/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 163
+        role: leaf
+        serial_number: TEP-2-163
+        name: LEAF163
+        oob_address: 2.2.2.63/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.63/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 164
+        role: leaf
+        serial_number: TEP-2-164
+        name: LEAF164
+        oob_address: 2.2.2.64/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.64/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 165
+        role: leaf
+        serial_number: TEP-2-165
+        name: LEAF165
+        oob_address: 2.2.2.65/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.65/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 166
+        role: leaf
+        serial_number: TEP-2-166
+        name: LEAF166
+        oob_address: 2.2.2.66/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.66/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 167
+        role: leaf
+        serial_number: TEP-2-167
+        name: LEAF167
+        oob_address: 2.2.2.67/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.67/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 168
+        role: leaf
+        serial_number: TEP-2-168
+        name: LEAF168
+        oob_address: 2.2.2.68/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.68/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 169
+        role: leaf
+        serial_number: TEP-2-169
+        name: LEAF169
+        oob_address: 2.2.2.69/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.69/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 170
+        role: leaf
+        serial_number: TEP-2-170
+        name: LEAF170
+        oob_address: 2.2.2.70/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.70/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 171
+        role: leaf
+        serial_number: TEP-2-171
+        name: LEAF171
+        oob_address: 2.2.2.71/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.71/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 172
+        role: leaf
+        serial_number: TEP-2-172
+        name: LEAF172
+        oob_address: 2.2.2.72/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.72/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 173
+        role: leaf
+        serial_number: TEP-2-173
+        name: LEAF173
+        oob_address: 2.2.2.73/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.73/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 174
+        role: leaf
+        serial_number: TEP-2-174
+        name: LEAF174
+        oob_address: 2.2.2.74/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.74/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 175
+        role: leaf
+        serial_number: TEP-2-175
+        name: LEAF175
+        oob_address: 2.2.2.75/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.75/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 176
+        role: leaf
+        serial_number: TEP-2-176
+        name: LEAF176
+        oob_address: 2.2.2.76/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.76/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 177
+        role: leaf
+        serial_number: TEP-2-177
+        name: LEAF177
+        oob_address: 2.2.2.77/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.77/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 178
+        role: leaf
+        serial_number: TEP-2-178
+        name: LEAF178
+        oob_address: 2.2.2.78/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.78/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 179
+        role: leaf
+        serial_number: TEP-2-179
+        name: LEAF179
+        oob_address: 2.2.2.79/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.79/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 180
+        role: leaf
+        serial_number: TEP-2-180
+        name: LEAF180
+        oob_address: 2.2.2.80/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.80/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 181
+        role: leaf
+        serial_number: TEP-2-181
+        name: LEAF181
+        oob_address: 2.2.2.81/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.81/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 182
+        role: leaf
+        serial_number: TEP-2-182
+        name: LEAF182
+        oob_address: 2.2.2.82/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.82/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 183
+        role: leaf
+        serial_number: TEP-2-183
+        name: LEAF183
+        oob_address: 2.2.2.83/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.83/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 184
+        role: leaf
+        serial_number: TEP-2-184
+        name: LEAF184
+        oob_address: 2.2.2.84/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.84/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 185
+        role: leaf
+        serial_number: TEP-2-185
+        name: LEAF185
+        oob_address: 2.2.2.85/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.85/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 186
+        role: leaf
+        serial_number: TEP-2-186
+        name: LEAF186
+        oob_address: 2.2.2.86/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.86/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 187
+        role: leaf
+        serial_number: TEP-2-187
+        name: LEAF187
+        oob_address: 2.2.2.87/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.87/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 188
+        role: leaf
+        serial_number: TEP-2-188
+        name: LEAF188
+        oob_address: 2.2.2.88/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.88/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 189
+        role: leaf
+        serial_number: TEP-2-189
+        name: LEAF189
+        oob_address: 2.2.2.89/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.89/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 190
+        role: leaf
+        serial_number: TEP-2-190
+        name: LEAF190
+        oob_address: 2.2.2.90/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.90/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 191
+        role: leaf
+        serial_number: TEP-2-191
+        name: LEAF191
+        oob_address: 2.2.2.91/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.91/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 192
+        role: leaf
+        serial_number: TEP-2-192
+        name: LEAF192
+        oob_address: 2.2.2.92/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.92/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 193
+        role: leaf
+        serial_number: TEP-2-193
+        name: LEAF193
+        oob_address: 2.2.2.93/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.93/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 194
+        role: leaf
+        serial_number: TEP-2-194
+        name: LEAF194
+        oob_address: 2.2.2.94/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.94/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 195
+        role: leaf
+        serial_number: TEP-2-195
+        name: LEAF195
+        oob_address: 2.2.2.95/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.95/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 196
+        role: leaf
+        serial_number: TEP-2-196
+        name: LEAF196
+        oob_address: 2.2.2.96/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.96/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 197
+        role: leaf
+        serial_number: TEP-2-197
+        name: LEAF197
+        oob_address: 2.2.2.97/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.97/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 198
+        role: leaf
+        serial_number: TEP-2-198
+        name: LEAF198
+        oob_address: 2.2.2.98/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.98/24
+        inb_gateway: 1.1.2.254
+        update_group: MG2
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 199
+        role: leaf
+        serial_number: TEP-2-199
+        name: LEAF199
+        oob_address: 2.2.2.99/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.99/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 200
+        role: leaf
+        serial_number: TEP-2-200
+        name: LEAF200
+        oob_address: 2.2.2.100/24
+        oob_gateway: 2.2.2.254
+        inb_address: 1.1.2.100/24
+        inb_gateway: 1.1.2.254
+        update_group: MG1
+        fabric_policy_group: ALL_LEAFS
+        access_policy_group: ALL_LEAFS
+      - id: 1001
+        role: spine
+        serial_number: TEP-1-103
+        name: SPINE1101
+        update_group: MG1
+        fabric_policy_group: ALL_SPINES
+      - id: 1002
+        role: spine
+        serial_number: TEP-2-1102
+        name: SPINE1102
+        update_group: MG2
+        fabric_policy_group: ALL_SPINES
+      - id: 1003
+        role: spine
+        serial_number: TEP-2-1103
+        name: SPINE1103
+        update_group: MG1
+        fabric_policy_group: ALL_SPINES
+      - id: 1004
+        role: spine
+        serial_number: TEP-2-1104
+        name: SPINE1104
+        update_group: MG2
+        fabric_policy_group: ALL_SPINES
+      - id: 1005
+        role: spine
+        serial_number: TEP-2-1105
+        name: SPINE1105
+        update_group: MG1
+        fabric_policy_group: ALL_SPINES
+      - id: 1006
+        role: spine
+        serial_number: TEP-2-1106
+        name: SPINE1106
+        update_group: MG2
+        fabric_policy_group: ALL_SPINES
+      - id: 1
+        role: apic
+        oob_address: 10.51.77.61/24
+        oob_gateway: 10.51.77.254
